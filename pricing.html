@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transparent motorcycle service pricing. View our Basic, Complete, and Premium service plans with detailed cost breakdown for all services.">
+    <title>Pricing | Moto Service Pro — Motorcycle Service & Repair Shop</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+        }
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+        .cost-table thead th {
+            background: var(--secondary);
+            color: #fff;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        [dir="rtl"] .cost-table thead th { text-align: right; }
+        .cost-table tbody td {
+            padding: 0.875rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.9375rem;
+        }
+        .cost-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .cost-table tbody tr:hover {
+            background: var(--primary-subtle);
+        }
+        .cost-table .price-cell {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="main-nav"></div>
+
+<!-- ═══════════ PAGE HEADER ═══════════ -->
+<div class="page-header" style="text-align:center;">
+    <div class="container">
+        <div class="breadcrumb" style="justify-content:center;">
+            <a href="index.html">Home</a>
+            <span class="separator"><i class="fas fa-chevron-right" style="font-size:0.5rem;"></i></span>
+            <span style="color:rgba(255,255,255,0.9);">Pricing</span>
+        </div>
+        <h1>Service Pricing</h1>
+        <p style="margin:0 auto;">Transparent pricing with no hidden charges. Choose a plan that fits your motorcycle's needs.</p>
+    </div>
+</div>
+
+<!-- ═══════════ PRICING CARDS ═══════════ -->
+<section class="section" id="pricing-plans">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-tags"></i> Service Plans</div>
+            <h2>Choose Your Service Plan</h2>
+            <p>All plans include a complimentary vehicle wash and service report.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Basic -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="icon-box icon-box-lg" style="margin:0 auto 1rem;">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <h3>Basic Service</h3>
+                <p style="font-size:0.875rem;color:var(--text-muted);">Essential maintenance for regular upkeep</p>
+                <div class="price">₹1,499 <span>/ service</span></div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> Engine oil change</li>
+                    <li><i class="fas fa-check"></i> Air filter cleaning</li>
+                    <li><i class="fas fa-check"></i> Chain lubrication</li>
+                    <li><i class="fas fa-check"></i> Brake inspection</li>
+                    <li><i class="fas fa-check"></i> Tyre pressure check</li>
+                    <li><i class="fas fa-check"></i> General inspection</li>
+                </ul>
+                <a href="contact.html#booking-form" class="btn btn-secondary w-full">Book Basic Service</a>
+            </div>
+
+            <!-- Complete (Popular) -->
+            <div class="pricing-card popular animate-on-scroll">
+                <div class="icon-box icon-box-lg" style="margin:0 auto 1rem;background:var(--primary);color:#fff;">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Complete Service</h3>
+                <p style="font-size:0.875rem;color:var(--text-muted);">Comprehensive care for optimal performance</p>
+                <div class="price">₹2,999 <span>/ service</span></div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> Everything in Basic</li>
+                    <li><i class="fas fa-check"></i> Spark plug replacement</li>
+                    <li><i class="fas fa-check"></i> Brake pad inspection</li>
+                    <li><i class="fas fa-check"></i> Coolant top-up</li>
+                    <li><i class="fas fa-check"></i> Chain adjustment & clean</li>
+                    <li><i class="fas fa-check"></i> Battery health check</li>
+                    <li><i class="fas fa-check"></i> Throttle & clutch calibration</li>
+                </ul>
+                <a href="contact.html#booking-form" class="btn btn-primary w-full">Book Complete Service</a>
+            </div>
+
+            <!-- Premium -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="icon-box icon-box-lg" style="margin:0 auto 1rem;">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3>Premium Overhaul</h3>
+                <p style="font-size:0.875rem;color:var(--text-muted);">Complete restoration for peak performance</p>
+                <div class="price">₹5,999 <span>/ service</span></div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> Everything in Complete</li>
+                    <li><i class="fas fa-check"></i> Full engine diagnostics</li>
+                    <li><i class="fas fa-check"></i> Brake fluid replacement</li>
+                    <li><i class="fas fa-check"></i> Chain & sprocket replacement</li>
+                    <li><i class="fas fa-check"></i> Suspension inspection</li>
+                    <li><i class="fas fa-check"></i> ECU error code clearing</li>
+                    <li><i class="fas fa-check"></i> 90-day service warranty</li>
+                </ul>
+                <a href="contact.html#booking-form" class="btn btn-secondary w-full">Book Premium Overhaul</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ INDIVIDUAL SERVICE COSTS ═══════════ -->
+<section class="section bg-surface" id="cost-breakdown">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-list-check"></i> Cost Breakdown</div>
+            <h2>Individual Service Costs</h2>
+            <p>Approximate prices for individual services. Final cost may vary based on motorcycle model and parts required.</p>
+        </div>
+
+        <div style="max-width:740px;margin:0 auto;" class="animate-on-scroll">
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Starting Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-oil-can" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Engine Oil Change</td>
+                        <td class="price-cell">₹699</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-circle-notch" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Tyre Replacement (per tyre)</td>
+                        <td class="price-cell">₹1,999</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-gauge-high" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Brake Pad Replacement</td>
+                        <td class="price-cell">₹899</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-link" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Chain Adjustment & Lube</td>
+                        <td class="price-cell">₹499</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-link" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Chain & Sprocket Replacement</td>
+                        <td class="price-cell">₹2,499</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-car-battery" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Battery Replacement</td>
+                        <td class="price-cell">₹1,299</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-microchip" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Engine Diagnostics (ECU Scan)</td>
+                        <td class="price-cell">₹999</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-filter" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Air Filter Replacement</td>
+                        <td class="price-cell">₹399</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-bolt" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Spark Plug Replacement</td>
+                        <td class="price-cell">₹349</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-droplet" style="color:var(--primary);margin-right:0.5rem;font-size:0.75rem;"></i> Coolant Flush & Refill</td>
+                        <td class="price-cell">₹599</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align:center;margin-top:1.25rem;font-size:0.8125rem;color:var(--text-muted);"><i class="fas fa-info-circle" style="margin-right:0.25rem;"></i> Prices are approximate and may vary based on motorcycle model. Labour charges included.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="section" id="pricing-faq">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-circle-question"></i> FAQ</div>
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div style="max-width:700px;margin:0 auto;" class="animate-on-scroll">
+            <div class="faq-item active">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Are these prices fixed or can they vary?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Prices listed are approximate starting points. The final cost may vary depending on your motorcycle's make, model, and the specific parts required. We always provide a detailed estimate before starting any work.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Do you use genuine OEM parts?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Yes, we prioritize genuine OEM parts for all services. We also offer quality aftermarket alternatives at lower price points when requested, but we always recommend OEM for optimal performance and warranty compliance.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Is there a warranty on services?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Our Premium Overhaul plan includes a 90-day service warranty. Basic and Complete service plans come with a 30-day warranty on labour and parts replaced during the service.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Do you offer pickup and drop service?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Yes! We offer free pickup and drop service within a 10km radius for Complete and Premium service plans. For Basic service, a nominal pickup charge of ₹199 applies.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    How long does a typical service take?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Basic service typically takes 2-3 hours, Complete service takes 4-5 hours, and Premium Overhaul takes 1-2 business days depending on the work required. We'll keep you informed throughout the process.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div id="main-footer"></div>
+
+<script src="components.js"></script>
+</body>
+</html>

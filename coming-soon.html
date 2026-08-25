@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This page is coming soon. Subscribe for updates on new features and services from Moto Service Pro.">
+    <title>Coming Soon | Moto Service Pro — Motorcycle Service & Repair Shop</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-xl);
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+            min-width: 90px;
+            backdrop-filter: blur(8px);
+        }
+        .countdown-value {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 2.25rem;
+            color: var(--primary);
+            line-height: 1.1;
+            animation: countDown 2s ease-in-out infinite;
+        }
+        .countdown-label {
+            font-size: 0.6875rem;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+        .subscribe-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .subscribe-form input {
+            flex: 1;
+            padding: 0.75rem 1.25rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius-lg);
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            outline: none;
+            transition: var(--transition-fast);
+        }
+        .subscribe-form input:focus {
+            border-color: var(--primary);
+        }
+        .subscribe-form input::placeholder {
+            color: rgba(255,255,255,0.35);
+        }
+        .coming-socials {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2.5rem;
+        }
+        .coming-social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.5);
+            transition: var(--transition-fast);
+        }
+        .coming-social-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(212,69,26,0.1);
+        }
+        @media (max-width: 480px) {
+            .subscribe-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body class="fullscreen-page">
+
+<!-- Top Bar -->
+<div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;max-width:1200px;margin:0 auto;width:100%;">
+    <a href="index.html" class="nav-logo" aria-label="Moto Service Pro Home" style="opacity:0.85;">
+        <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#D4451A"/>
+            <path d="M18 34c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <circle cx="22" cy="38" r="6" stroke="white" stroke-width="3" fill="none"/>
+            <circle cx="42" cy="38" r="6" stroke="white" stroke-width="3" fill="none"/>
+            <circle cx="22" cy="38" r="2" fill="white"/>
+            <circle cx="42" cy="38" r="2" fill="white"/>
+            <path d="M28 38h8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 27l3-7 3 7" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="nav-logo-text">
+            <span class="brand-top" style="color:#fff;">MOTO</span>
+            <span class="brand-bottom">Service Pro</span>
+        </div>
+    </a>
+    <div style="display:flex;gap:0.5rem;">
+        <button onclick="toggleDir()" class="auth-toggle-btn" title="Toggle Direction">
+            <span class="dir-label" style="font-size:0.625rem;font-weight:600;">LTR</span>
+        </button>
+        <button onclick="toggleTheme()" class="auth-toggle-btn" title="Toggle Theme" aria-label="Toggle dark mode">
+            <i class="fas fa-moon theme-icon"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="fullscreen-content">
+    <div style="max-width:540px;">
+        <!-- Decorative glow -->
+        <div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(212,69,26,0.08),transparent 65%);border-radius:50%;pointer-events:none;"></div>
+
+        <div style="position:relative;z-index:2;">
+            <div class="section-label" style="color:rgba(255,255,255,0.5);justify-content:center;margin-bottom:1rem;">
+                <i class="fas fa-rocket"></i> Under Construction
+            </div>
+            <h1 style="color:#fff;font-size:clamp(2rem,5vw,3rem);margin-bottom:0.75rem;">Coming Soon</h1>
+            <p style="color:rgba(255,255,255,0.5);font-size:1rem;max-width:400px;margin:0 auto;">
+                We're working on something exciting. This page will be available soon. Subscribe to get notified!
+            </p>
+
+            <!-- Countdown -->
+            <div class="countdown-grid" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-days">28</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-hours">14</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-mins">36</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="cd-secs">52</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
+            <!-- Subscribe -->
+            <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Subscribed! We will notify you when this page launches.'); this.reset();">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit" class="btn btn-primary">Notify Me</button>
+            </form>
+
+            <!-- Social -->
+            <div class="coming-socials">
+                <a href="#" class="coming-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="coming-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="coming-social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="coming-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="components.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        initAuthPage();
+
+        // Simple countdown timer (30 days from now)
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 30);
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+            if (diff <= 0) return;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    });
+</script>
+</body>
+</html>

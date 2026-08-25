@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book a motorcycle service appointment. Contact Moto Service Pro for expert motorcycle repairs, maintenance, and diagnostics. Visit our workshop or call us.">
+    <title>Contact | Moto Service Pro — Motorcycle Service & Repair Shop</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        .contact-info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-xl);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+        }
+        .contact-info-card:hover {
+            border-color: rgba(212, 69, 26, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="main-nav"></div>
+
+<!-- ═══════════ PAGE HEADER ═══════════ -->
+<div class="page-header" style="text-align:center;">
+    <div class="container">
+        <div class="breadcrumb" style="justify-content:center;">
+            <a href="index.html">Home</a>
+            <span class="separator"><i class="fas fa-chevron-right" style="font-size:0.5rem;"></i></span>
+            <span style="color:rgba(255,255,255,0.9);">Contact</span>
+        </div>
+        <h1>Get In Touch</h1>
+        <p style="margin:0 auto;">Book an appointment, ask a question, or visit our workshop. We're here to help.</p>
+    </div>
+</div>
+
+<!-- ═══════════ CONTACT SECTION ═══════════ -->
+<section class="section" id="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Left: Booking Form -->
+            <div class="animate-on-scroll">
+                <div class="section-label"><i class="fas fa-envelope"></i> Send an Inquiry</div>
+                <h2 style="margin-bottom:0.5rem;">Quick Contact & Inquiry</h2>
+                <p style="margin-bottom:1.25rem;color:var(--text-muted);">Fill in the form below and we'll reply to your inquiry within 2 hours.</p>
+
+
+                <form onsubmit="event.preventDefault(); alert('Appointment request submitted! We will contact you shortly to confirm.'); this.reset();" id="booking-form">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div class="form-group">
+                            <label class="form-label" for="full-name">Full Name</label>
+                            <input type="text" id="full-name" class="form-input" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div class="form-group">
+                            <label class="form-label" for="bike-brand">Motorcycle Brand</label>
+                            <select id="bike-brand" class="form-input" required>
+                                <option value="">Select Brand</option>
+                                <option>Honda</option>
+                                <option>Yamaha</option>
+                                <option>Royal Enfield</option>
+                                <option>KTM</option>
+                                <option>Bajaj</option>
+                                <option>Suzuki</option>
+                                <option>TVS</option>
+                                <option>Hero</option>
+                                <option>Kawasaki</option>
+                                <option>BMW</option>
+                                <option>Ducati</option>
+                                <option>Harley-Davidson</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="bike-model">Model Name</label>
+                            <input type="text" id="bike-model" class="form-input" placeholder="e.g. Classic 350">
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div class="form-group">
+                            <label class="form-label" for="service-type">Service Type</label>
+                            <select id="service-type" class="form-input" required>
+                                <option value="">Select Service</option>
+                                <option>Routine Servicing</option>
+                                <option>Oil Change</option>
+                                <option>Tyre Replacement</option>
+                                <option>Brake Servicing</option>
+                                <option>Chain Adjustment</option>
+                                <option>Battery Replacement</option>
+                                <option>Engine Diagnostics</option>
+                                <option>Complete Service Plan</option>
+                                <option>Premium Overhaul</option>
+                                <option>Other / Custom</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="preferred-date">Preferred Date</label>
+                            <input type="date" id="preferred-date" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Additional Notes</label>
+                        <textarea id="message" class="form-input" placeholder="Describe any specific issues or requests..." rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full btn-lg">
+                        <i class="fas fa-paper-plane"></i> Submit Booking Request
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right: Info + Map -->
+            <div class="animate-on-scroll">
+                <div class="section-label"><i class="fas fa-map-marker-alt"></i> Workshop Details</div>
+                <h2 style="margin-bottom:1.5rem;">Visit Our Workshop</h2>
+
+                <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+                    <div class="contact-info-card">
+                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4 style="font-size:0.9375rem;margin-bottom:0.25rem;">Address</h4>
+                            <p style="font-size:0.875rem;color:var(--text-muted);">42, Industrial Area Phase II,<br>Rajaji Nagar, Bengaluru - 560010</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="icon-box"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4 style="font-size:0.9375rem;margin-bottom:0.25rem;">Phone</h4>
+                            <p style="font-size:0.875rem;color:var(--text-muted);">+91 98765 43210<br>+91 80 2345 6789</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4 style="font-size:0.9375rem;margin-bottom:0.25rem;">Email</h4>
+                            <p style="font-size:0.875rem;color:var(--text-muted);">service@motoservicepro.com<br>booking@motoservicepro.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="icon-box"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4 style="font-size:0.9375rem;margin-bottom:0.25rem;">Working Hours</h4>
+                            <p style="font-size:0.875rem;color:var(--text-muted);">Mon – Sat: 8:00 AM – 7:00 PM<br>Sunday: 9:00 AM – 2:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Channels -->
+                <div class="social-connect-card">
+                    <p style="font-family:var(--font-heading);font-weight:600;font-size:0.875rem;color:var(--text-heading);margin-bottom:0.75rem;">Follow Us</p>
+                    <!-- Social Channels Grid -->
+                    <div class="social-channels-grid">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-channel-item instagram-item" title="Follow on Instagram">
+                            <i class="fab fa-instagram"></i>
+                            <div class="channel-text">
+                                <span class="channel-name">Instagram</span>
+                                <span class="channel-handle">@motoservicepro</span>
+                            </div>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-channel-item youtube-item" title="Subscribe on YouTube">
+                            <i class="fab fa-youtube"></i>
+                            <div class="channel-text">
+                                <span class="channel-name">YouTube</span>
+                                <span class="channel-handle">Repair Guides</span>
+                            </div>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-channel-item facebook-item" title="Like on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <div class="channel-text">
+                                <span class="channel-name">Facebook</span>
+                                <span class="channel-handle">Community</span>
+                            </div>
+                        </a>
+                        <a href="tel:+919876543210" class="social-channel-item call-item" title="Call Direct Hotline">
+                            <i class="fas fa-phone-volume"></i>
+                            <div class="channel-text">
+                                <span class="channel-name">Hotline</span>
+                                <span class="channel-handle">+91 98765 43210</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ LIVE MAP SECTION ═══════════ -->
+<section class="section" style="padding-top:0;" id="workshop-map-section">
+    <div class="container animate-on-scroll">
+        <div class="section-header text-center" style="margin-bottom:2rem;">
+            <div class="section-label" style="justify-content:center;"><i class="fas fa-location-dot"></i> Live Map Location</div>
+            <h2>Find Our Workshop</h2>
+            <p style="margin:0 auto;max-width:560px;color:var(--text-muted);">Visit our full-service motorcycle garage at 42, Industrial Area Phase II, Rajaji Nagar, Bengaluru.</p>
+        </div>
+        <div class="live-map-wrapper">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.684157771239!2d77.55048227584144!3d12.992039714470353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3dd59d2822a9%3A0x6fb0d2f09d81d2a1!2sRajajinagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade" 
+                title="Moto Service Pro Workshop Live Location Map">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<style>
+    .social-connect-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-xl);
+        padding: 1.25rem;
+        transition: var(--transition-smooth);
+        box-shadow: var(--shadow-xs);
+    }
+    .social-connect-card:hover {
+        border-color: rgba(212, 69, 26, 0.2);
+        box-shadow: var(--shadow-sm);
+    }
+    .social-channels-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+    }
+    .social-channel-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.6rem 0.75rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--text-heading);
+        transition: all 0.25s ease;
+    }
+    .social-channel-item i {
+        font-size: 1.1rem;
+        width: 1.25rem;
+        text-align: center;
+        transition: transform 0.25s ease;
+    }
+    .social-channel-item .channel-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+    .social-channel-item .channel-name {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text-heading);
+    }
+    .social-channel-item .channel-handle {
+        font-size: 0.6875rem;
+        color: var(--text-muted);
+    }
+    .social-channel-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+    }
+    .social-channel-item:hover i {
+        transform: scale(1.15);
+    }
+    .social-channel-item.instagram-item:hover {
+        border-color: #E1306C;
+        background: rgba(225, 48, 108, 0.06);
+    }
+    .social-channel-item.instagram-item:hover i {
+        color: #E1306C;
+    }
+    .social-channel-item.youtube-item:hover {
+        border-color: #FF0000;
+        background: rgba(255, 0, 0, 0.06);
+    }
+    .social-channel-item.youtube-item:hover i {
+        color: #FF0000;
+    }
+    .social-channel-item.facebook-item:hover {
+        border-color: #1877F2;
+        background: rgba(24, 119, 242, 0.06);
+    }
+    .social-channel-item.facebook-item:hover i {
+        color: #1877F2;
+    }
+    .social-channel-item.call-item:hover {
+        border-color: var(--primary);
+        background: rgba(212, 69, 26, 0.06);
+    }
+    .social-channel-item.call-item:hover i {
+        color: var(--primary);
+    }
+    .live-map-wrapper {
+        position: relative;
+        width: 100%;
+        height: 440px;
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        border: 1px solid var(--border-light);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-smooth);
+    }
+    .live-map-wrapper:hover {
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(212, 69, 26, 0.3);
+    }
+    .live-map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+    @media (max-width: 768px) {
+        .live-map-wrapper {
+            height: 320px;
+        }
+    }
+    @media (max-width: 480px) {
+        .social-channels-grid {
+            grid-template-columns: 1fr;
+        }
+        #booking-form [style*="grid-template-columns:1fr 1fr"] {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+
+<!-- Footer -->
+<div id="main-footer"></div>
+
+<script src="components.js"></script>
+</body>
+</html>

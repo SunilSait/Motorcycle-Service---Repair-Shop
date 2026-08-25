@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We service all major motorcycle brands — Honda, Yamaha, Royal Enfield, KTM, Bajaj, Suzuki, TVS, Hero, Kawasaki, BMW, Ducati, and Harley-Davidson.">
+    <title>Brands Serviced | Moto Service Pro — Motorcycle Service & Repair Shop</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .brand-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: var(--transition-premium);
+            cursor: default;
+        }
+        .brand-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: rgba(212, 69, 26, 0.2);
+        }
+        .brand-card-icon {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background: var(--primary-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            transition: var(--transition-smooth);
+        }
+        .brand-card:hover .brand-card-icon {
+            background: var(--primary);
+        }
+        .brand-card-icon i {
+            font-size: 1.75rem;
+            color: var(--primary);
+            transition: var(--transition-smooth);
+        }
+        .brand-card:hover .brand-card-icon i {
+            color: #fff;
+        }
+        .brand-card h4 {
+            margin-bottom: 0.375rem;
+        }
+        .brand-card p {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+        .brands-main-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .brands-main-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .brands-main-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 400px) {
+            .brands-main-grid { grid-template-columns: 1fr; }
+        }
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .commitment-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="main-nav"></div>
+
+<!-- ═══════════ PAGE HEADER ═══════════ -->
+<div class="page-header" style="text-align:center;">
+    <div class="container">
+        <div class="breadcrumb" style="justify-content:center;">
+            <a href="index.html">Home</a>
+            <span class="separator"><i class="fas fa-chevron-right" style="font-size:0.5rem;"></i></span>
+            <span style="color:rgba(255,255,255,0.9);">Brands Serviced</span>
+        </div>
+        <h1>Brands We Service</h1>
+        <p style="margin:0 auto;">We're equipped and trained to service motorcycles from all major manufacturers worldwide.</p>
+    </div>
+</div>
+
+<!-- ═══════════ BRANDS GRID ═══════════ -->
+<section class="section" id="brands-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-motorcycle"></i> Multi-Brand Expertise</div>
+            <h2>12+ Brands, One Trusted Workshop</h2>
+            <p>Whether you ride a commuter, sport bike, cruiser, or adventure tourer — we have the expertise and parts to keep it running perfectly.</p>
+        </div>
+
+        <div class="brands-main-grid">
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Honda</h4>
+                <p>Activa, CB Shine, Hornet, CB350</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Yamaha</h4>
+                <p>FZ, R15, MT-15, Ray ZR</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Royal Enfield</h4>
+                <p>Classic, Meteor, Himalayan, Hunter</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>KTM</h4>
+                <p>Duke 200, Duke 390, RC 390, Adventure</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Bajaj</h4>
+                <p>Pulsar, Dominar, Avenger, CT</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Suzuki</h4>
+                <p>Gixxer, Access, Burgman, V-Strom</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>TVS</h4>
+                <p>Apache, Jupiter, Ntorq, Raider</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Hero</h4>
+                <p>Splendor, Xtreme, Xpulse, Pleasure</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Kawasaki</h4>
+                <p>Ninja 300, Z650, Versys, W800</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>BMW</h4>
+                <p>G 310, F 850 GS, R 1250, S 1000</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Ducati</h4>
+                <p>Scrambler, Monster, Panigale, Multistrada</p>
+            </div>
+            <div class="brand-card animate-on-scroll">
+                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
+                <h4>Harley-Davidson</h4>
+                <p>X440, Iron 883, Street Bob, Fat Boy</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ BRAND COMMITMENT ═══════════ -->
+<section class="section bg-surface" id="brand-commitment">
+    <div class="container">
+        <div class="commitment-grid">
+            <div class="img-container animate-on-scroll" style="height:380px;">
+                <img src="assets/images/gallery-2.jpg" alt="Various motorcycles in our workshop" class="img-cover">
+            </div>
+            <div class="animate-on-scroll">
+                <div class="section-label"><i class="fas fa-shield-halved"></i> Our Commitment</div>
+                <h2 style="margin-bottom:1rem;">Multi-Brand Excellence</h2>
+                <p style="margin-bottom:1.5rem;">We invest in brand-specific training and diagnostic tools to ensure every motorcycle gets factory-level service. Our technicians are continuously updated on the latest models and service procedures.</p>
+                <div style="display:flex;flex-direction:column;gap:1.25rem;">
+                    <div style="display:flex;align-items:flex-start;gap:1rem;">
+                        <div class="icon-box" style="flex-shrink:0;"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h4 style="margin-bottom:0.25rem;font-size:1rem;">Brand-Certified Training</h4>
+                            <p style="font-size:0.875rem;color:var(--text-muted);">Our technicians undergo regular training to stay current with each manufacturer's latest technologies.</p>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:1rem;">
+                        <div class="icon-box" style="flex-shrink:0;"><i class="fas fa-box-open"></i></div>
+                        <div>
+                            <h4 style="margin-bottom:0.25rem;font-size:1rem;">Genuine OEM Parts</h4>
+                            <p style="font-size:0.875rem;color:var(--text-muted);">We source authentic parts directly from manufacturers to maintain your motorcycle's warranty and performance.</p>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:1rem;">
+                        <div class="icon-box" style="flex-shrink:0;"><i class="fas fa-laptop-code"></i></div>
+                        <div>
+                            <h4 style="margin-bottom:0.25rem;font-size:1rem;">Brand-Specific Diagnostics</h4>
+                            <p style="font-size:0.875rem;color:var(--text-muted);">Advanced ECU diagnostic scanners compatible with all major motorcycle brands for accurate troubleshooting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section style="background:var(--secondary);padding:4rem 0;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:-80px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(212,69,26,0.12),transparent 70%);border-radius:50%;"></div>
+    <div class="container" style="position:relative;z-index:2;">
+        <h2 style="color:#fff;margin-bottom:0.75rem;">Can't Find Your Brand?</h2>
+        <p style="color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 2rem;">We service many more brands beyond what's listed. Contact us and we'll confirm if we can help with your motorcycle.</p>
+        <a href="contact.html" class="btn btn-primary btn-lg"><i class="fas fa-phone"></i> Contact Us</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<div id="main-footer"></div>
+
+<script src="components.js"></script>
+</body>
+</html>
