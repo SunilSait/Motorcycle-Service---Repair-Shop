@@ -147,10 +147,23 @@
             gap: 1.5rem;
         }
         @media (max-width: 1024px) {
-            .reviews-grid-v2 { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid-v2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .reviews-grid-v2 .testimonial-card-v2:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                max-width: 520px;
+                width: 100%;
+                justify-self: center;
+            }
         }
         @media (max-width: 768px) {
-            .reviews-grid-v2 { grid-template-columns: 1fr; }
+            .reviews-grid-v2 {
+                grid-template-columns: 1fr;
+            }
+            .reviews-grid-v2 .testimonial-card-v2:last-child:nth-child(odd) {
+                max-width: 100%;
+            }
         }
 
         .review-trust-bar {
@@ -592,10 +605,23 @@
             gap: 1.5rem;
         }
         @media (max-width: 1024px) {
-            .workshop-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .workshop-gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .workshop-gallery-grid .gallery-card:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                max-width: 480px;
+                width: 100%;
+                justify-self: center;
+            }
         }
         @media (max-width: 640px) {
-            .workshop-gallery-grid { grid-template-columns: 1fr; }
+            .workshop-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .workshop-gallery-grid .gallery-card:last-child:nth-child(odd) {
+                max-width: 100%;
+            }
         }
 
         .gallery-card {
@@ -1053,7 +1079,7 @@
                         <span class="verified-badge-chip"><i class="fas fa-check-circle"></i> Verified Rider</span>
                     </div>
                     <div class="review-service-pill"><i class="fas fa-wrench"></i> Desmo Service & Tuning</div>
-                    <p class="review-quote-text">"Exceptional service every single time. The team goes above and beyond to ensure my Panigale is running flawlessly. Their attention to detail on high-performance superbikes is unmatched."</p>
+                    <p class="review-quote-text">"Exceptional service every single time. The team goes above and beyond to ensure my Panigale is running flawlessly. Their attention to detail on high-performance superbikes."</p>
                 </div>
                 <div class="review-author-footer">
                     <div class="review-author-info">
@@ -1083,7 +1109,7 @@
                         <span class="verified-badge-chip"><i class="fas fa-check-circle"></i> Verified Rider</span>
                     </div>
                     <div class="review-service-pill"><i class="fas fa-cog"></i> Complete Engine Overhaul</div>
-                    <p class="review-quote-text">"I brought my old Bullet 500 for a complete mechanical overhaul. They treated it like their own treasure. The engine purrs like new now — completely transparent pricing and genuine spares."</p>
+                    <p class="review-quote-text">"I brought my old Bullet 500 for a complete mechanical overhaul. They treated it like their own treasure. The engine purrs like new now — completely transparent pricing."</p>
                 </div>
                 <div class="review-author-footer">
                     <div class="review-author-info">
@@ -1245,7 +1271,7 @@
                             <i class="fas fa-calendar-check"></i> Book Online Now
                         </a>
                         <a href="tel:+919876543210" class="btn btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);">
-                            <i class="fas fa-phone-alt"></i> +91 98765 43210
+                            <i class="fas fa-phone"></i> +91 98765 43210
                         </a>
                     </div>
                 </div>
