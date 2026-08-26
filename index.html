@@ -383,6 +383,213 @@
             margin-top: 0.2rem;
             flex-shrink: 0;
         }
+
+        /* --- Hero 3-Image Collage --- */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 3.5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text-col {
+            max-width: 600px;
+        }
+
+        .hero-collage-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .hero-collage-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(16, 185, 129, 0.05) 55%, transparent 75%);
+            filter: blur(40px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-collage-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 0.875rem;
+            align-items: stretch;
+        }
+
+        .collage-card {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: #0D1117;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .collage-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+
+        .collage-card-main {
+            height: 380px;
+        }
+
+        .collage-sub-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+
+        .collage-card-sub {
+            height: 185px;
+        }
+
+        .collage-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .collage-card:hover .collage-img {
+            transform: scale(1.08);
+        }
+
+        .collage-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.75rem;
+            background: linear-gradient(to top, rgba(13, 17, 23, 0.92) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .collage-tag {
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #E2E8F0;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            padding: 0.3rem 0.65rem;
+            border-radius: var(--radius-full);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .collage-tag i {
+            color: var(--primary);
+        }
+
+        .hero-floating-badge {
+            position: absolute;
+            bottom: -1rem;
+            left: -1rem;
+            z-index: 2;
+            background: rgba(19, 27, 36, 0.94);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: var(--radius-xl);
+            padding: 0.75rem 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.2);
+            animation: heroBadgeFloat 4s ease-in-out infinite;
+        }
+
+        .floating-badge-icon {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .floating-badge-title {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            font-family: var(--font-heading);
+            line-height: 1.2;
+        }
+
+        .floating-badge-subtitle {
+            font-size: 0.6875rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.2;
+            margin-top: 0.15rem;
+        }
+
+        @keyframes heroBadgeFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        [dir="rtl"] .hero-floating-badge {
+            left: auto;
+            right: -1rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+            .hero-text-col {
+                max-width: 100%;
+            }
+            .hero-text-col p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-text-col div[style*="display:flex"] {
+                justify-content: center;
+            }
+            .hero-floating-badge {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -1rem;
+            }
+            [dir="rtl"] .hero-floating-badge {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        @media (max-width: 576px) {
+            .hero-collage-grid {
+                grid-template-columns: 1fr;
+            }
+            .collage-card-main {
+                height: 240px;
+            }
+            .collage-card-sub {
+                height: 160px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -396,38 +603,81 @@
         <img src="assets/images/hero-workshop.jpg" alt="Motorcycle workshop interior with mechanics servicing bikes">
     </div>
     <div class="hero-overlay"></div>
-    <div class="hero-content container" style="padding:2rem 1.25rem;">
-        <div style="max-width:640px;">
-            <div class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:1rem;">
-                <i class="fas fa-motorcycle"></i> Trusted Since 2010
-            </div>
-            <h1 style="color:#fff;font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem;line-height:1.1;">
-                Expert Motorcycle<br><span style="color:#10B981;">Care & Repair</span>
-            </h1>
-            <p style="color:rgba(255,255,255,0.75);font-size:1.0625rem;max-width:480px;margin-bottom:2rem;line-height:1.7;">
-                From routine oil changes to complete engine overhauls — our certified technicians keep your ride performing at its peak.
-            </p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-                <a href="contact.html#booking-form" class="btn btn-primary btn-lg">
-                    <i class="fas fa-calendar-check"></i> Book Service
-                </a>
-                <a href="services.html" class="btn btn-lg" style="background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.25);backdrop-filter:blur(8px);">
-                    Our Services <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
-                </a>
-            </div>
-            <!-- Mini stats -->
-            <div style="display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap;">
-                <div>
-                    <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="15000" data-suffix="+">0</div>
-                    <div style="font-size:0.8125rem;color:rgba(255,255,255,0.55);">Bikes Serviced</div>
+    <div class="hero-content container" style="padding:2.5rem 1.25rem;">
+        <div class="hero-grid">
+            <div class="hero-text-col">
+                <div class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:1rem;">
+                    <i class="fas fa-motorcycle"></i> Trusted Since 2010
                 </div>
-                <div>
-                    <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="12" data-suffix="+">0</div>
-                    <div style="font-size:0.8125rem;color:rgba(255,255,255,0.55);">Brands Covered</div>
+                <h1 style="color:#fff;font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem;line-height:1.1;">
+                    Expert Motorcycle<br><span style="color:#10B981;">Care & Repair</span>
+                </h1>
+                <p style="color:rgba(255,255,255,0.75);font-size:1.0625rem;max-width:480px;margin-bottom:2rem;line-height:1.7;">
+                    From routine oil changes to complete engine overhauls — our certified technicians keep your ride performing at its peak.
+                </p>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                    <a href="contact.html#booking-form" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calendar-check"></i> Book Service
+                    </a>
+                    <a href="services.html" class="btn btn-lg" style="background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.25);backdrop-filter:blur(8px);">
+                        Our Services <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                    </a>
                 </div>
-                <div>
-                    <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="14" data-suffix=" Yrs">0</div>
-                    <div style="font-size:0.8125rem;color:rgba(255,255,255,0.55);">Experience</div>
+                <!-- Mini stats -->
+                <div style="display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap;">
+                    <div>
+                        <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="15000" data-suffix="+">0</div>
+                        <div style="font-size:0.8125rem;color:rgba(255,255,255,0.55);">Bikes Serviced</div>
+                    </div>
+                    <div>
+                        <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="12" data-suffix="+">0</div>
+                        <div style="font-size:0.8125rem;color:rgba(255,255,255,0.55);">Brands Covered</div>
+                    </div>
+                    <div>
+                        <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="14" data-suffix=" Yrs">0</div>
+                        <div style="font-size:0.8125rem;color:rgba(255,255,255,0.55);">Experience</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: 3-Image Collage -->
+            <div class="hero-collage-wrap animate-on-scroll">
+                <div class="hero-collage-glow"></div>
+                <div class="hero-collage-grid">
+                    <!-- Main Large Featured Card -->
+                    <div class="collage-card collage-card-main">
+                        <img src="assets/images/hero-collage-1.jpg" alt="Master technician servicing motorcycle on hydraulic lift" class="collage-img">
+                        <div class="collage-card-overlay">
+                            <span class="collage-tag"><i class="fas fa-wrench"></i> Full Precision Care</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Stack of 2 Secondary Cards -->
+                    <div class="collage-sub-stack">
+                        <div class="collage-card collage-card-sub">
+                            <img src="assets/images/hero-collage-2.jpg" alt="Brembo brake calibration and suspension tuning" class="collage-img">
+                            <div class="collage-card-overlay">
+                                <span class="collage-tag"><i class="fas fa-shield-halved"></i> OEM Brembo Parts</span>
+                            </div>
+                        </div>
+                        <div class="collage-card collage-card-sub">
+                            <img src="assets/images/hero-collage-3.jpg" alt="Certified master technician fine tuning motorcycle engine" class="collage-img">
+                            <div class="collage-card-overlay">
+                                <span class="collage-tag"><i class="fas fa-microchip"></i> Engine Diagnostics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Certified Badge -->
+                <div class="hero-floating-badge">
+                    <div class="floating-badge-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div>
+                        <div class="floating-badge-title">100% Certified Workshop</div>
+                        <div class="floating-badge-subtitle">OEM Parts & Warranty Safe</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -493,7 +743,7 @@
                     <i class="fas fa-oil-can"></i>
                 </div>
                 <h4 style="margin-bottom:0.625rem;">Routine Servicing</h4>
-                <p style="font-size:0.9375rem;color:var(--text-muted);">Comprehensive multi-point inspection and maintenance to keep your motorcycle running smoothly.</p>
+                <p style="font-size:0.9375rem;color:var(--text-muted);">Comprehensive multi-point inspection and maintenance to keep your motorcycle.</p>
                 <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;gap:0.375rem;margin-top:1rem;">
                     Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
                 </a>
@@ -504,7 +754,7 @@
                     <i class="fas fa-cogs"></i>
                 </div>
                 <h4 style="margin-bottom:0.625rem;">Engine Diagnostics</h4>
-                <p style="font-size:0.9375rem;color:var(--text-muted);">Advanced diagnostic tools to identify and resolve engine issues with pinpoint accuracy.</p>
+                <p style="font-size:0.9375rem;color:var(--text-muted);">Advanced diagnostic tools to identify and resolve engine issues with accuracy.</p>
                 <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;gap:0.375rem;margin-top:1rem;">
                     Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
                 </a>

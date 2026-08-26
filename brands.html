@@ -211,7 +211,9 @@
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-2xl);
-            padding: 1.75rem 1.5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             transition: var(--transition-premium);
             text-align: left;
         }
@@ -222,25 +224,54 @@
             box-shadow: 0 16px 36px rgba(16, 185, 129, 0.1);
         }
 
+        .diag-tech-image-wrap {
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+            background: #0B0E14;
+        }
+
+        .diag-tech-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .diag-tech-card:hover .diag-tech-img {
+            transform: scale(1.08);
+        }
+
         .diag-tech-icon {
-            width: 3.25rem;
-            height: 3.25rem;
-            border-radius: var(--radius-xl);
-            background: var(--primary-subtle);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            position: absolute;
+            bottom: 0.75rem;
+            right: 0.75rem;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: var(--radius-lg);
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
             transition: var(--transition-smooth);
         }
 
         .diag-tech-card:hover .diag-tech-icon {
             background: var(--primary);
             color: #FFFFFF;
+            border-color: var(--primary);
             box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .diag-tech-body {
+            padding: 1.5rem 1.25rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .diag-tech-title {
@@ -255,6 +286,7 @@
             font-size: 0.8125rem;
             color: var(--text-muted);
             line-height: 1.55;
+            flex: 1;
         }
 
         .diag-tech-badge {
@@ -264,8 +296,10 @@
             font-weight: 600;
             color: var(--primary);
             background: var(--primary-subtle);
-            padding: 0.2rem 0.6rem;
+            padding: 0.25rem 0.65rem;
             border-radius: var(--radius-full);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            align-self: flex-start;
         }
 
         /* --- Split CTA with Image on Left for Brands Page --- */
@@ -633,36 +667,56 @@
         </div>
 
         <div class="diag-tech-grid animate-on-scroll">
-            <!-- Tool 1 -->
+            <!-- Tool 1: OBD-II -->
             <div class="diag-tech-card">
-                <div class="diag-tech-icon"><i class="fas fa-laptop-code"></i></div>
-                <div class="diag-tech-title">OBD-II & CAN-Bus Hub</div>
-                <p class="diag-tech-desc">Real-time live sensor streaming, TPS calibration, and OEM error code decoding for 12+ brands.</p>
-                <span class="diag-tech-badge">Live Sensor Data</span>
+                <div class="diag-tech-image-wrap">
+                    <img src="assets/images/diag-obd.jpg" alt="OBD-II and CAN-Bus live motorcycle diagnostic scanner tablet" class="diag-tech-img">
+                    <div class="diag-tech-icon"><i class="fas fa-laptop-code"></i></div>
+                </div>
+                <div class="diag-tech-body">
+                    <div class="diag-tech-title">OBD-II & CAN-Bus Hub</div>
+                    <p class="diag-tech-desc">Real-time live sensor streaming, TPS calibration, and OEM error code decoding for 12+ brands.</p>
+                    <span class="diag-tech-badge">Live Sensor Data</span>
+                </div>
             </div>
 
-            <!-- Tool 2 -->
+            <!-- Tool 2: Ultrasonic -->
             <div class="diag-tech-card">
-                <div class="diag-tech-icon"><i class="fas fa-spray-can"></i></div>
-                <div class="diag-tech-title">Ultrasonic Injector Bath</div>
-                <p class="diag-tech-desc">High-frequency ultrasonic cleaning restoring microscopic fuel spray patterns for crisp throttle response.</p>
-                <span class="diag-tech-badge">Atomization Testing</span>
+                <div class="diag-tech-image-wrap">
+                    <img src="assets/images/diag-ultrasonic.jpg" alt="Ultrasonic fuel injector cleaning bath and spray flow testing bench" class="diag-tech-img">
+                    <div class="diag-tech-icon"><i class="fas fa-spray-can"></i></div>
+                </div>
+                <div class="diag-tech-body">
+                    <div class="diag-tech-title">Ultrasonic Injector Bath</div>
+                    <p class="diag-tech-desc">High-frequency ultrasonic cleaning restoring microscopic fuel spray patterns for crisp throttle response.</p>
+                    <span class="diag-tech-badge">Atomization Testing</span>
+                </div>
             </div>
 
-            <!-- Tool 3 -->
+            <!-- Tool 3: Suspension Dyno -->
             <div class="diag-tech-card">
-                <div class="diag-tech-icon"><i class="fas fa-arrows-up-down"></i></div>
-                <div class="diag-tech-title">Suspension Vacuum Dyno</div>
-                <p class="diag-tech-desc">Precision vacuum bleeding and nitrogen charging for WP, Showa, Öhlins, and Endurance dampers.</p>
-                <span class="diag-tech-badge">Rebound Calibration</span>
+                <div class="diag-tech-image-wrap">
+                    <img src="assets/images/diag-vacuum-dyno.jpg" alt="Motorcycle suspension vacuum bleeding dyno with nitrogen charging" class="diag-tech-img">
+                    <div class="diag-tech-icon"><i class="fas fa-arrows-up-down"></i></div>
+                </div>
+                <div class="diag-tech-body">
+                    <div class="diag-tech-title">Suspension Vacuum Dyno</div>
+                    <p class="diag-tech-desc">Precision vacuum bleeding and nitrogen charging for WP, Showa, Öhlins, and Endurance dampers.</p>
+                    <span class="diag-tech-badge">Rebound Calibration</span>
+                </div>
             </div>
 
-            <!-- Tool 4 -->
+            <!-- Tool 4: Wheel Balancer -->
             <div class="diag-tech-card">
-                <div class="diag-tech-icon"><i class="fas fa-circle-nodes"></i></div>
-                <div class="diag-tech-title">Digital Wheel Balancer</div>
-                <p class="diag-tech-desc">Dynamic spin balancing accurate to 0.5 grams with laser rim run-out detection for wobble-free speeds.</p>
-                <span class="diag-tech-badge">0.5g Accuracy</span>
+                <div class="diag-tech-image-wrap">
+                    <img src="assets/images/diag-balancer.jpg" alt="Dynamic digital motorcycle wheel spin balancer with laser alignment" class="diag-tech-img">
+                    <div class="diag-tech-icon"><i class="fas fa-circle-nodes"></i></div>
+                </div>
+                <div class="diag-tech-body">
+                    <div class="diag-tech-title">Digital Wheel Balancer</div>
+                    <p class="diag-tech-desc">Dynamic spin balancing accurate to 0.5 grams with laser rim run-out detection for wobble-free speeds.</p>
+                    <span class="diag-tech-badge">0.5g Accuracy</span>
+                </div>
             </div>
         </div>
     </div>

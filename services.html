@@ -263,7 +263,9 @@
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-2xl);
-            padding: 1.75rem 1.5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             transition: var(--transition-premium);
             text-align: left;
         }
@@ -274,25 +276,54 @@
             box-shadow: 0 16px 36px rgba(16, 185, 129, 0.1);
         }
 
+        .spare-image-wrap {
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+            background: #0B0E14;
+        }
+
+        .spare-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .spare-card:hover .spare-img {
+            transform: scale(1.08);
+        }
+
         .spare-icon-wrap {
-            width: 3.25rem;
-            height: 3.25rem;
-            border-radius: var(--radius-xl);
-            background: var(--primary-subtle);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            position: absolute;
+            bottom: 0.75rem;
+            right: 0.75rem;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: var(--radius-lg);
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
             transition: var(--transition-smooth);
         }
 
         .spare-card:hover .spare-icon-wrap {
             background: var(--primary);
             color: #FFFFFF;
+            border-color: var(--primary);
             box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .spare-body {
+            padding: 1.5rem 1.25rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .spare-title {
@@ -307,6 +338,7 @@
             font-size: 0.8125rem;
             color: var(--text-muted);
             line-height: 1.55;
+            flex: 1;
         }
 
         .spare-brand-tag {
@@ -316,8 +348,10 @@
             font-weight: 600;
             color: var(--primary);
             background: var(--primary-subtle);
-            padding: 0.2rem 0.6rem;
+            padding: 0.25rem 0.65rem;
             border-radius: var(--radius-full);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            align-self: flex-start;
         }
     </style>
 </head>
@@ -350,14 +384,11 @@
             <!-- 1. Routine Servicing -->
             <div class="service-card animate-on-scroll">
                 <div class="service-card-img">
-                    <img src="assets/images/service-routine.jpg" alt="Mechanic performing routine motorcycle service">
+                    <img src="assets/images/services-routine.jpg" alt="Mechanic performing routine motorcycle service">
                     <span class="price-badge">From ₹1,499</span>
                 </div>
                 <div class="service-card-body">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                        <div class="icon-box"><i class="fas fa-tools"></i></div>
-                        <h3 style="margin-bottom:0;">Routine Servicing</h3>
-                    </div>
+                    <h3>Routine Servicing</h3>
                     <p>Comprehensive multi-point inspection and maintenance to keep your motorcycle performing at its best. Regular servicing extends engine life and improves fuel efficiency.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Multi-point safety inspection</li>
@@ -371,14 +402,11 @@
             <!-- 2. Oil Change -->
             <div class="service-card animate-on-scroll">
                 <div class="service-card-img">
-                    <img src="assets/images/service-oil.jpg" alt="Motorcycle engine oil being changed">
+                    <img src="assets/images/services-oil.jpg" alt="Motorcycle engine oil being changed">
                     <span class="price-badge">From ₹699</span>
                 </div>
                 <div class="service-card-body">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                        <div class="icon-box"><i class="fas fa-oil-can"></i></div>
-                        <h3 style="margin-bottom:0;">Oil Change</h3>
-                    </div>
+                    <h3>Oil Change</h3>
                     <p>Premium engine oil replacement with genuine filters. We use manufacturer-recommended oil grades to ensure optimal lubrication and engine protection.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Full synthetic & semi-synthetic options</li>
@@ -396,10 +424,7 @@
                     <span class="price-badge">From ₹1,999</span>
                 </div>
                 <div class="service-card-body">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                        <div class="icon-box"><i class="fas fa-circle-notch"></i></div>
-                        <h3 style="margin-bottom:0;">Tyre Replacement</h3>
-                    </div>
+                    <h3>Tyre Replacement</h3>
                     <p>Wide selection of tyres from top brands — MRF, CEAT, Michelin, Pirelli. Professional fitting with precision balancing for a smooth, safe ride.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> All major tyre brands stocked</li>
@@ -417,10 +442,7 @@
                     <span class="price-badge">From ₹899</span>
                 </div>
                 <div class="service-card-body">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                        <div class="icon-box"><i class="fas fa-gauge-high"></i></div>
-                        <h3 style="margin-bottom:0;">Brake Servicing</h3>
-                    </div>
+                    <h3>Brake Servicing</h3>
                     <p>Complete brake system inspection and servicing for maximum stopping power. We service both disc and drum brakes with replacement parts.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Brake pad replacement</li>
@@ -438,10 +460,7 @@
                     <span class="price-badge">From ₹499</span>
                 </div>
                 <div class="service-card-body">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                        <div class="icon-box"><i class="fas fa-link"></i></div>
-                        <h3 style="margin-bottom:0;">Chain Adjustment</h3>
-                    </div>
+                    <h3>Chain Adjustment</h3>
                     <p>Proper chain tension and alignment for smooth power delivery. Regular chain maintenance prevents premature sprocket wear and ensures a quieter ride.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Chain slack adjustment</li>
@@ -459,10 +478,7 @@
                     <span class="price-badge">From ₹1,299</span>
                 </div>
                 <div class="service-card-body">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                        <div class="icon-box"><i class="fas fa-car-battery"></i></div>
-                        <h3 style="margin-bottom:0;">Battery Replacement</h3>
-                    </div>
+                    <h3>Battery Replacement</h3>
                     <p>Battery testing, charging, and replacement with reliable brands. We stock batteries for all motorcycle models and ensure proper terminal connections.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Battery health diagnostics</li>
@@ -476,14 +492,11 @@
             <!-- 7. Engine Diagnostics (Center-aligned for odd count) -->
             <div class="service-card animate-on-scroll" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
                 <div class="service-card-img">
-                    <img src="assets/images/service-engine.jpg" alt="Engine diagnostic scanner connected to motorcycle">
+                    <img src="assets/images/services-engine.jpg" alt="Engine diagnostic scanner connected to motorcycle">
                     <span class="price-badge">From ₹999</span>
                 </div>
                 <div class="service-card-body">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                        <div class="icon-box"><i class="fas fa-microchip"></i></div>
-                        <h3 style="margin-bottom:0;">Engine Diagnostics</h3>
-                    </div>
+                    <h3>Engine Diagnostics</h3>
                     <p>State-of-the-art electronic diagnostic tools that interface with your motorcycle's ECU to identify performance issues, error codes, and sensor malfunctions. Our advanced scanning technology covers all modern fuel-injected motorcycles.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> OBD/ECU error code scanning</li>
@@ -628,34 +641,50 @@
         <div class="spares-guarantee-grid animate-on-scroll">
             <!-- Spare 1: Lubricants -->
             <div class="spare-card">
-                <div class="spare-icon-wrap"><i class="fas fa-oil-can"></i></div>
-                <div class="spare-title">Motul & Liqui Moly</div>
-                <p class="spare-desc">100% synthetic Ester-core engine oils engineered for extreme thermal shear resistance and slick shifts.</p>
-                <span class="spare-brand-tag">300V • 7100 • Street Race</span>
+                <div class="spare-image-wrap">
+                    <img src="assets/images/spare-oils.jpg" alt="Motul & Liqui Moly 100% synthetic engine oils" class="spare-img">
+                </div>
+                <div class="spare-body">
+                    <div class="spare-title">Motul & Liqui Moly</div>
+                    <p class="spare-desc">100% synthetic Ester-core engine oils engineered for extreme thermal shear resistance and slick shifts.</p>
+                    <span class="spare-brand-tag">300V • 7100 • Street Race</span>
+                </div>
             </div>
 
             <!-- Spare 2: Braking -->
             <div class="spare-card">
-                <div class="spare-icon-wrap"><i class="fas fa-stopwatch-20"></i></div>
-                <div class="spare-title">Brembo & Nissin</div>
-                <p class="spare-desc">OEM sintered and organic brake pads delivering progressive bite with zero brake fade under heavy load.</p>
-                <span class="spare-brand-tag">Sintered • Ceramic • OEM</span>
+                <div class="spare-image-wrap">
+                    <img src="assets/images/spare-brakes.jpg" alt="Brembo & Nissin sintered and organic brake pads" class="spare-img">
+                </div>
+                <div class="spare-body">
+                    <div class="spare-title">Brembo & Nissin</div>
+                    <p class="spare-desc">OEM sintered and organic brake pads delivering progressive bite with zero brake fade under heavy load.</p>
+                    <span class="spare-brand-tag">Sintered • Ceramic • OEM</span>
+                </div>
             </div>
 
             <!-- Spare 3: Drive System -->
             <div class="spare-card">
-                <div class="spare-icon-wrap"><i class="fas fa-link"></i></div>
-                <div class="spare-title">D.I.D & Rolon Chains</div>
-                <p class="spare-desc">Gold X-Ring heavy-duty drive chains with case-hardened alloy sprockets for maximum mileage.</p>
-                <span class="spare-brand-tag">X-Ring • O-Ring • Brass</span>
+                <div class="spare-image-wrap">
+                    <img src="assets/images/spare-chains.jpg" alt="D.I.D & Rolon Gold X-Ring drive chains and alloy sprockets" class="spare-img">
+                </div>
+                <div class="spare-body">
+                    <div class="spare-title">D.I.D & Rolon Chains</div>
+                    <p class="spare-desc">Gold X-Ring heavy-duty drive chains with case-hardened alloy sprockets for maximum mileage.</p>
+                    <span class="spare-brand-tag">X-Ring • O-Ring • Brass</span>
+                </div>
             </div>
 
             <!-- Spare 4: Ignition -->
             <div class="spare-card">
-                <div class="spare-icon-wrap"><i class="fas fa-bolt-lightning"></i></div>
-                <div class="spare-title">NGK Laser Iridium</div>
-                <p class="spare-desc">Ultra-fine 0.6mm laser-welded iridium electrode spark plugs for instantaneous throttle response.</p>
-                <span class="spare-brand-tag">Iridium IX • OEM Spark</span>
+                <div class="spare-image-wrap">
+                    <img src="assets/images/spare-sparkplugs.jpg" alt="NGK Laser Iridium spark plugs" class="spare-img">
+                </div>
+                <div class="spare-body">
+                    <div class="spare-title">NGK Laser Iridium</div>
+                    <p class="spare-desc">Ultra-fine 0.6mm laser-welded iridium electrode spark plugs for instantaneous throttle response.</p>
+                    <span class="spare-brand-tag">Iridium IX • OEM Spark</span>
+                </div>
             </div>
         </div>
     </div>
