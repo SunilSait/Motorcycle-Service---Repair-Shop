@@ -29,8 +29,27 @@
             transition: var(--transition-smooth);
         }
         .contact-info-card:hover {
-            border-color: rgba(212, 69, 26, 0.2);
+            border-color: rgba(16, 185, 129, 0.2);
             box-shadow: var(--shadow-sm);
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="date"].form-input::-webkit-calendar-picker-indicator {
+            filter: none;
+            cursor: pointer;
+            opacity: 0.75;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator:hover,
+        input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+        }
+        .dark input[type="date"]::-webkit-calendar-picker-indicator,
+        .dark input[type="date"].form-input::-webkit-calendar-picker-indicator {
+            filter: brightness(0) invert(1) !important;
+            opacity: 0.85 !important;
+        }
+        .dark input[type="date"]::-webkit-calendar-picker-indicator:hover,
+        .dark input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
+            opacity: 1 !important;
         }
     </style>
 </head>
@@ -41,7 +60,11 @@
 
 <!-- ═══════════ PAGE HEADER ═══════════ -->
 <div class="page-header" style="text-align:center;">
-    <div class="container">
+    <div class="page-header-bg">
+        <img src="assets/images/header-contact.jpg" alt="Motorcycle service reception and customer consultation desk">
+    </div>
+    <div class="page-header-overlay"></div>
+    <div class="container animate-on-scroll">
         <div class="breadcrumb" style="justify-content:center;">
             <a href="index.html">Home</a>
             <span class="separator"><i class="fas fa-chevron-right" style="font-size:0.5rem;"></i></span>
@@ -241,7 +264,7 @@
         box-shadow: var(--shadow-xs);
     }
     .social-connect-card:hover {
-        border-color: rgba(212, 69, 26, 0.2);
+        border-color: rgba(16, 185, 129, 0.2);
         box-shadow: var(--shadow-sm);
     }
     .social-channels-grid {
@@ -311,7 +334,7 @@
     }
     .social-channel-item.call-item:hover {
         border-color: var(--primary);
-        background: rgba(212, 69, 26, 0.06);
+        background: rgba(16, 185, 129, 0.06);
     }
     .social-channel-item.call-item:hover i {
         color: var(--primary);
@@ -328,7 +351,7 @@
     }
     .live-map-wrapper:hover {
         box-shadow: var(--shadow-lg);
-        border-color: rgba(212, 69, 26, 0.3);
+        border-color: rgba(16, 185, 129, 0.3);
     }
     .live-map-wrapper iframe {
         width: 100%;

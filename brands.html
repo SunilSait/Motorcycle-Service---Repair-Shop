@@ -13,44 +13,79 @@
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-2xl);
-            padding: 2.5rem 1.5rem;
-            text-align: center;
+            overflow: hidden;
             transition: var(--transition-premium);
-            cursor: default;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            position: relative;
+            box-shadow: var(--shadow-card);
         }
         .brand-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-card-hover);
-            border-color: rgba(212, 69, 26, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+            border-color: rgba(16, 185, 129, 0.3);
         }
-        .brand-card-icon {
-            width: 5rem;
-            height: 5rem;
-            border-radius: 50%;
-            background: var(--primary-subtle);
+        .brand-card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #0B0F14;
+        }
+        .brand-card-bike-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .brand-card:hover .brand-card-bike-img {
+            transform: scale(1.08);
+        }
+        .brand-card-logo-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.25rem;
-            transition: var(--transition-smooth);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform var(--transition-smooth), border-color var(--transition-smooth);
         }
-        .brand-card:hover .brand-card-icon {
-            background: var(--primary);
+        .brand-card:hover .brand-card-logo-badge {
+            transform: scale(1.1);
+            border-color: var(--primary);
+            box-shadow: 0 4px 16px var(--primary-glow);
         }
-        .brand-card-icon i {
-            font-size: 1.75rem;
-            color: var(--primary);
-            transition: var(--transition-smooth);
+        .brand-card-logo-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
-        .brand-card:hover .brand-card-icon i {
-            color: #fff;
+        .brand-card-content {
+            padding: 1.25rem 1.25rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
         }
-        .brand-card h4 {
-            margin-bottom: 0.375rem;
+        .brand-card-content h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.15rem;
+            font-family: var(--font-heading);
+            color: var(--text-heading);
         }
-        .brand-card p {
+        .brand-card-content p {
             font-size: 0.8125rem;
             color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
         }
         .brands-main-grid {
             display: grid;
@@ -75,6 +110,233 @@
         @media (max-width: 768px) {
             .commitment-grid { grid-template-columns: 1fr; }
         }
+
+        /* --- Riding Category Specialization Grid --- */
+        .bike-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .bike-categories-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .bike-categories-grid { grid-template-columns: 1fr; }
+        }
+
+        .category-spec-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 2rem 1.5rem;
+            transition: var(--transition-premium);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .category-spec-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.1);
+        }
+
+        .category-spec-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: var(--radius-xl);
+            background: var(--primary-subtle);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-bottom: 1.25rem;
+            transition: var(--transition-smooth);
+        }
+
+        .category-spec-card:hover .category-spec-icon {
+            background: var(--primary);
+            color: #FFFFFF;
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .category-spec-displacement {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .category-spec-title {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.75rem;
+        }
+
+        .category-spec-desc {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+        }
+
+        .category-spec-models {
+            font-size: 0.75rem;
+            color: var(--text-body);
+            background: var(--bg-surface);
+            padding: 0.6rem 0.85rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+        }
+
+        /* --- Diagnostic Technology Grid --- */
+        .diag-tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .diag-tech-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .diag-tech-grid { grid-template-columns: 1fr; }
+        }
+
+        .diag-tech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 1.75rem 1.5rem;
+            transition: var(--transition-premium);
+            text-align: left;
+        }
+
+        .diag-tech-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.1);
+        }
+
+        .diag-tech-icon {
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: var(--radius-xl);
+            background: var(--primary-subtle);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            transition: var(--transition-smooth);
+        }
+
+        .diag-tech-card:hover .diag-tech-icon {
+            background: var(--primary);
+            color: #FFFFFF;
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .diag-tech-title {
+            font-family: var(--font-heading);
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .diag-tech-desc {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .diag-tech-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-subtle);
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-full);
+        }
+
+        /* --- Split CTA with Image on Left for Brands Page --- */
+        .brands-cta-wrapper {
+            background: linear-gradient(145deg, #131B24 0%, #0B1017 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-3xl);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 50px rgba(16, 185, 129, 0.08);
+        }
+
+        .brands-cta-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 2.5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brands-cta-img-container {
+            position: relative;
+            height: 320px;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .brands-cta-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .brands-cta-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .brands-cta-badge {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.25rem;
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-full);
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #34D399;
+        }
+
+        @media (max-width: 992px) {
+            .brands-cta-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .brands-cta-wrapper {
+                padding: 2.5rem 1.5rem;
+            }
+            .brands-cta-img-container {
+                height: 240px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -84,7 +346,11 @@
 
 <!-- ═══════════ PAGE HEADER ═══════════ -->
 <div class="page-header" style="text-align:center;">
-    <div class="container">
+    <div class="page-header-bg">
+        <img src="assets/images/header-brands.jpg" alt="Multi-brand performance motorcycle showroom and service facility">
+    </div>
+    <div class="page-header-overlay"></div>
+    <div class="container animate-on-scroll">
         <div class="breadcrumb" style="justify-content:center;">
             <a href="index.html">Home</a>
             <span class="separator"><i class="fas fa-chevron-right" style="font-size:0.5rem;"></i></span>
@@ -106,71 +372,220 @@
 
         <div class="brands-main-grid">
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Honda</h4>
-                <p>Activa, CB Shine, Hornet, CB350</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-honda.jpg" alt="Honda CB350 Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/honda.svg" alt="Honda Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Honda</h4>
+                    <p>Activa, CB Shine, Hornet, CB350</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Yamaha</h4>
-                <p>FZ, R15, MT-15, Ray ZR</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-yamaha.jpg" alt="Yamaha R15 Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/yamaha.svg" alt="Yamaha Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Yamaha</h4>
+                    <p>FZ, R15, MT-15, Ray ZR</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Royal Enfield</h4>
-                <p>Classic, Meteor, Himalayan, Hunter</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-royal-enfield.jpg" alt="Royal Enfield Classic 350" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/royal-enfield.svg" alt="Royal Enfield Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Royal Enfield</h4>
+                    <p>Classic, Meteor, Himalayan, Hunter</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>KTM</h4>
-                <p>Duke 200, Duke 390, RC 390, Adventure</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-ktm.jpg" alt="KTM Duke 390 Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/ktm.svg" alt="KTM Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>KTM</h4>
+                    <p>Duke 200, Duke 390, RC 390</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Bajaj</h4>
-                <p>Pulsar, Dominar, Avenger, CT</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-bajaj.jpg" alt="Bajaj Pulsar NS200 Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/bajaj.svg" alt="Bajaj Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Bajaj</h4>
+                    <p>Pulsar, Dominar, Avenger, CT</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Suzuki</h4>
-                <p>Gixxer, Access, Burgman, V-Strom</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-suzuki.jpg" alt="Suzuki Gixxer SF 250 Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/suzuki.svg" alt="Suzuki Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Suzuki</h4>
+                    <p>Gixxer, Access, Burgman, V-Strom</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>TVS</h4>
-                <p>Apache, Jupiter, Ntorq, Raider</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-tvs.jpg" alt="TVS Apache RR310 Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/tvs.svg" alt="TVS Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>TVS</h4>
+                    <p>Apache, Jupiter, Ntorq, Raider</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Hero</h4>
-                <p>Splendor, Xtreme, Xpulse, Pleasure</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-hero.jpg" alt="Hero XPulse 200 Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/hero.svg" alt="Hero MotoCorp Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Hero</h4>
+                    <p>Splendor, Xtreme, Xpulse, Pleasure</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Kawasaki</h4>
-                <p>Ninja 300, Z650, Versys, W800</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-kawasaki.jpg" alt="Kawasaki Ninja Motorcycle" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/kawasaki.svg" alt="Kawasaki Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Kawasaki</h4>
+                    <p>Ninja 300, Z650, Versys, W800</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>BMW</h4>
-                <p>G 310, F 850 GS, R 1250, S 1000</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-bmw.jpg" alt="BMW S 1000 RR Superbike" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/bmw.svg" alt="BMW Motorrad Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>BMW</h4>
+                    <p>G 310, F 850 GS, R 1250, S 1000</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Ducati</h4>
-                <p>Scrambler, Monster, Panigale, Multistrada</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-ducati.jpg" alt="Ducati Panigale V4 Superbike" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/ducati.svg" alt="Ducati Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Ducati</h4>
+                    <p>Scrambler, Monster, Panigale</p>
+                </div>
             </div>
             <div class="brand-card animate-on-scroll">
-                <div class="brand-card-icon"><i class="fas fa-motorcycle"></i></div>
-                <h4>Harley-Davidson</h4>
-                <p>X440, Iron 883, Street Bob, Fat Boy</p>
+                <div class="brand-card-img-wrapper">
+                    <img src="assets/images/brands/bike-harley.jpg" alt="Harley-Davidson Fat Boy Cruiser" class="brand-card-bike-img">
+                    <div class="brand-card-logo-badge">
+                        <img src="assets/images/brands/harley-davidson.svg" alt="Harley-Davidson Logo">
+                    </div>
+                </div>
+                <div class="brand-card-content">
+                    <h4>Harley-Davidson</h4>
+                    <p>X440, Iron 883, Street Bob, Fat Boy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CATEGORY SPECIALIZATIONS ═══════════ -->
+<section class="section bg-surface" id="bike-categories">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-layer-group"></i> Tailored Care</div>
+            <h2>Specialized By Motorcycle Class</h2>
+            <p>Every class of machine demands unique service protocols, specialized tools, and precision tuning.</p>
+        </div>
+
+        <div class="bike-categories-grid animate-on-scroll">
+            <!-- Cat 1: Commuters -->
+            <div class="category-spec-card">
+                <div>
+                    <div class="category-spec-icon"><i class="fas fa-city"></i></div>
+                    <div class="category-spec-displacement">100cc – 160cc</div>
+                    <h3 class="category-spec-title">Daily Commuters </h3>
+                    <p class="category-spec-desc">Optimized for maximum fuel economy, smooth CVT belt operation, reliable cold starts, and low cost of ownership.</p>
+                </div>
+                <div class="category-spec-models">
+                    <strong>Popular:</strong> Activa, Splendor, Jupiter, Pulsar 150, Access
+                </div>
+            </div>
+
+            <!-- Cat 2: Sport & Naked -->
+            <div class="category-spec-card">
+                <div>
+                    <div class="category-spec-icon"><i class="fas fa-gauge-high"></i></div>
+                    <div class="category-spec-displacement">200cc – 400cc</div>
+                    <h3 class="category-spec-title">Performance Sport</h3>
+                    <p class="category-spec-desc">High-rev valve shimming, laser track chain alignment, slipper clutch setup, and high-temp coolant bleeding.</p>
+                </div>
+                <div class="category-spec-models">
+                    <strong>Popular:</strong> Duke 390, R15, MT-15, Apache RR310, G 310 R
+                </div>
+            </div>
+
+            <!-- Cat 3: Adventure & Touring -->
+            <div class="category-spec-card">
+                <div>
+                    <div class="category-spec-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="category-spec-displacement">350cc – 850cc</div>
+                    <h3 class="category-spec-title">Adventure & Tourers</h3>
+                    <p class="category-spec-desc">Long-travel suspension damping checks, spoked wheel truing, electrical accessory load testing, and terrain setup.</p>
+                </div>
+                <div class="category-spec-models">
+                    <strong>Popular:</strong> Himalayan 450, 390 Adv, V-Strom, F 850 GS
+                </div>
+            </div>
+
+            <!-- Cat 4: Superbikes & Cruisers -->
+            <div class="category-spec-card">
+                <div>
+                    <div class="category-spec-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="category-spec-displacement">650cc – 1200cc+</div>
+                    <h3 class="category-spec-title">Superbikes & Cruisers</h3>
+                    <p class="category-spec-desc">Desmo valve inspection, full CAN-bus ECU tuning, Brembo monobloc fluid flushes, and precision dyno diagnostics.</p>
+                </div>
+                <div class="category-spec-models">
+                    <strong>Popular:</strong> Panigale, Z650, Ninja ZX, Fat Boy, Scrambler
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ═══════════ BRAND COMMITMENT ═══════════ -->
-<section class="section bg-surface" id="brand-commitment">
+<section class="section" id="brand-commitment">
     <div class="container">
         <div class="commitment-grid">
             <div class="img-container animate-on-scroll" style="height:380px;">
@@ -208,13 +623,110 @@
     </div>
 </section>
 
-<!-- ═══════════ CTA ═══════════ -->
-<section style="background:var(--secondary);padding:4rem 0;text-align:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;bottom:-80px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(212,69,26,0.12),transparent 70%);border-radius:50%;"></div>
-    <div class="container" style="position:relative;z-index:2;">
-        <h2 style="color:#fff;margin-bottom:0.75rem;">Can't Find Your Brand?</h2>
-        <p style="color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto 2rem;">We service many more brands beyond what's listed. Contact us and we'll confirm if we can help with your motorcycle.</p>
-        <a href="contact.html" class="btn btn-primary btn-lg"><i class="fas fa-phone"></i> Contact Us</a>
+<!-- ═══════════ DIAGNOSTIC HARDWARE & TECHNOLOGY ═══════════ -->
+<section class="section bg-surface" id="diagnostic-technology">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-microchip"></i> Advanced Tooling</div>
+            <h2>Factory-Grade Diagnostic Gear</h2>
+            <p>We deploy dedicated hardware scanners, ultrasonic baths, and digital alignment benches for flawless results.</p>
+        </div>
+
+        <div class="diag-tech-grid animate-on-scroll">
+            <!-- Tool 1 -->
+            <div class="diag-tech-card">
+                <div class="diag-tech-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="diag-tech-title">OBD-II & CAN-Bus Hub</div>
+                <p class="diag-tech-desc">Real-time live sensor streaming, TPS calibration, and OEM error code decoding for 12+ brands.</p>
+                <span class="diag-tech-badge">Live Sensor Data</span>
+            </div>
+
+            <!-- Tool 2 -->
+            <div class="diag-tech-card">
+                <div class="diag-tech-icon"><i class="fas fa-spray-can"></i></div>
+                <div class="diag-tech-title">Ultrasonic Injector Bath</div>
+                <p class="diag-tech-desc">High-frequency ultrasonic cleaning restoring microscopic fuel spray patterns for crisp throttle response.</p>
+                <span class="diag-tech-badge">Atomization Testing</span>
+            </div>
+
+            <!-- Tool 3 -->
+            <div class="diag-tech-card">
+                <div class="diag-tech-icon"><i class="fas fa-arrows-up-down"></i></div>
+                <div class="diag-tech-title">Suspension Vacuum Dyno</div>
+                <p class="diag-tech-desc">Precision vacuum bleeding and nitrogen charging for WP, Showa, Öhlins, and Endurance dampers.</p>
+                <span class="diag-tech-badge">Rebound Calibration</span>
+            </div>
+
+            <!-- Tool 4 -->
+            <div class="diag-tech-card">
+                <div class="diag-tech-icon"><i class="fas fa-circle-nodes"></i></div>
+                <div class="diag-tech-title">Digital Wheel Balancer</div>
+                <p class="diag-tech-desc">Dynamic spin balancing accurate to 0.5 grams with laser rim run-out detection for wobble-free speeds.</p>
+                <span class="diag-tech-badge">0.5g Accuracy</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CTA (Split with Image on Left) ═══════════ -->
+<section class="section" style="padding:4.5rem 0;background:var(--bg-body);">
+    <div class="container">
+        <div class="brands-cta-wrapper animate-on-scroll">
+            <div style="position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(16,185,129,0.18),transparent 70%);border-radius:50%;pointer-events:none;"></div>
+            <div style="position:absolute;bottom:-100px;right:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(16,185,129,0.1),transparent 65%);border-radius:50%;pointer-events:none;"></div>
+
+            <div class="brands-cta-grid">
+                <!-- Left: Image with Floating Badge -->
+                <div class="brands-cta-img-container">
+                    <img src="assets/images/workshop-exterior.jpg" alt="Multi-brand motorcycle garage and workshop exterior">
+                    <div class="brands-cta-badge">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Custom & Import Support • 12+ Brands</span>
+                    </div>
+                </div>
+
+                <!-- Right: Content & Actions -->
+                <div>
+                    <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);padding:0.35rem 0.85rem;border-radius:var(--radius-full);font-size:0.75rem;font-weight:600;color:#34D399;margin-bottom:1.25rem;">
+                        <span style="width:8px;height:8px;background:#10B981;border-radius:50%;box-shadow:0 0 8px #10B981;"></span>
+                        <span>Universal Diagnostics & Direct Sourcing</span>
+                    </div>
+
+                    <h2 style="color:#fff;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.2;margin-bottom:1rem;">
+                        Can't Find Your Brand?<br>
+                        <span style="background:linear-gradient(135deg, #10B981 0%, #34D399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">We've Got You Covered.</span>
+                    </h2>
+
+                    <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.6;margin-bottom:1.5rem;">
+                        We service vintage classics, rare imports, custom scramblers, and brands beyond our standard catalog. Our master technicians have universal OBD-II scanners and direct access to global OEM parts distributors.
+                    </p>
+
+                    <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
+                        <div style="display:flex;align-items:center;gap:0.65rem;color:rgba(255,255,255,0.85);font-size:0.875rem;">
+                            <i class="fas fa-check-circle" style="color:var(--primary);"></i>
+                            <span>Universal OBD-II & CAN-Bus Diagnostic Scanner Coverage</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.65rem;color:rgba(255,255,255,0.85);font-size:0.875rem;">
+                            <i class="fas fa-check-circle" style="color:var(--primary);"></i>
+                            <span>Direct Sourcing for Import Spares & Custom Parts</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.65rem;color:rgba(255,255,255,0.85);font-size:0.875rem;">
+                            <i class="fas fa-check-circle" style="color:var(--primary);"></i>
+                            <span>Fast Delivery & Expert Turnaround within 48 Hours</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                        <a href="contact.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-phone-alt"></i> Contact Our Workshop
+                        </a>
+                        <a href="tel:+919876543210" class="btn btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);">
+                            <i class="fas fa-headset"></i> +91 98765 43210
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

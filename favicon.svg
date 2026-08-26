@@ -1,8 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <!-- Gear -->
-  <path d="M32 8l3.5 5.2a18 18 0 0 1 5.3 2.2L47 13l1 6.3a18 18 0 0 1 2.2 5.3L56 28l-5.2 3.5a18 18 0 0 1 0 5.8L56 41l-5.8 1.4a18 18 0 0 1-2.2 5.3L49 54l-6.2-2.6a18 18 0 0 1-5.3 2.2L34 59h-5.5l-1.4-5.8a18 18 0 0 1-5.3-2.2L16 54l-1-6.3a18 18 0 0 1-2.2-5.3L8 41l5.2-3.5a18 18 0 0 1 0-5.8L8 28l5.8-1.4a18 18 0 0 1 2.2-5.3L15 13l6.2 2.6a18 18 0 0 1 5.3-2.2L30 8h2z" fill="#D4451A" opacity="0.9"/>
-  <!-- Inner circle -->
-  <circle cx="32" cy="34" r="10" fill="#1B1F24"/>
-  <!-- Wrench -->
-  <path d="M22 18l4 4-2 2-4-4a8 8 0 0 0 10.5 10.5l10 10a3 3 0 0 0 4.2-4.2l-10-10A8 8 0 0 0 22 18z" fill="white" opacity="0.85"/>
+  <defs>
+    <linearGradient id="motoFavGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="motoAccentFav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6EE7B7"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#motoFavGrad)"/>
+  <circle cx="17" cy="42" r="8" stroke="#FFFFFF" stroke-width="3.5"/>
+  <circle cx="17" cy="42" r="2.5" fill="#FFFFFF"/>
+  <circle cx="47" cy="42" r="8" stroke="#FFFFFF" stroke-width="3.5"/>
+  <circle cx="47" cy="42" r="2.5" fill="#FFFFFF"/>
+  <path d="M17 42L25 32H36L47 42" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20 28.5L27 28.5L34 22C36.5 20.5 41 21 44 25L47.5 32" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 23L47 42" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M36.5 17L39.5 23" stroke="url(#motoAccentFav)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M49 26H54" stroke="url(#motoAccentFav)" stroke-width="3" stroke-linecap="round"/>
 </svg>

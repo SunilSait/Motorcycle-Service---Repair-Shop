@@ -8,6 +8,382 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Modern CTA Index Section --- */
+        .cta-index-box {
+            position: relative;
+            background: linear-gradient(145deg, #131B24 0%, #0B1017 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-3xl);
+            padding: 3.5rem 3rem 2.5rem;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 50px rgba(16, 185, 129, 0.08);
+        }
+
+        .cta-index-glow-1 {
+            position: absolute;
+            top: -120px;
+            right: -100px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, transparent 65%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-index-glow-2 {
+            position: absolute;
+            bottom: -100px;
+            left: -80px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-index-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-index-main {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 2.75rem;
+        }
+
+        .cta-index-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #34D399;
+            margin-bottom: 1.25rem;
+        }
+
+        .cta-pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10B981;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .cta-index-title {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .cta-gradient-text {
+            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-index-desc {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .cta-index-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-glass-btn {
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #FFFFFF !important;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            transition: var(--transition-smooth);
+        }
+
+        .cta-glass-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-index-tiles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-tile {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--radius-xl);
+            padding: 1.25rem;
+            transition: var(--transition-smooth);
+            text-align: left;
+        }
+
+        .cta-tile:hover {
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .cta-tile-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: var(--radius-lg);
+            background: rgba(16, 185, 129, 0.15);
+            color: #10B981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .cta-tile-title {
+            font-family: var(--font-heading);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 0.25rem;
+        }
+
+        .cta-tile-text {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.45;
+        }
+
+        .cta-index-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        .cta-hotline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .cta-hotline-link:hover {
+            color: #34D399;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .cta-index-tiles {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .cta-index-box {
+                padding: 2.5rem 1.5rem 1.75rem;
+            }
+        }
+
+        /* --- How It Works Process Grid --- */
+        .process-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+        @media (max-width: 1024px) {
+            .process-steps-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .process-steps-grid { grid-template-columns: 1fr; }
+        }
+
+        .process-step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 2rem 1.5rem;
+            position: relative;
+            transition: var(--transition-premium);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .process-step-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.12);
+        }
+
+        .process-step-number {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--primary);
+            opacity: 0.25;
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .process-step-card:hover .process-step-number {
+            opacity: 0.8;
+            transform: scale(1.08);
+        }
+
+        .process-step-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: var(--radius-xl);
+            background: var(--primary-subtle);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .process-step-card:hover .process-step-icon {
+            background: var(--primary);
+            color: #FFFFFF;
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .process-step-title {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* --- Featured Packages Grid --- */
+        .packages-pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            align-items: stretch;
+        }
+        @media (max-width: 1024px) {
+            .packages-pricing-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
+        }
+
+        .package-pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 2.25rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: var(--transition-premium);
+            overflow: hidden;
+        }
+
+        .package-pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .package-pricing-card.featured-package {
+            border-color: var(--primary);
+            box-shadow: 0 16px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .package-badge-popular {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: var(--primary);
+            color: #FFFFFF;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-full);
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .package-price-val {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin: 0.75rem 0 1.25rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .package-price-val span {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .package-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .package-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.875rem;
+            color: var(--text-body);
+            line-height: 1.4;
+        }
+
+        .package-feature-item i {
+            color: var(--primary);
+            font-size: 0.8125rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -26,7 +402,7 @@
                 <i class="fas fa-motorcycle"></i> Trusted Since 2010
             </div>
             <h1 style="color:#fff;font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem;line-height:1.1;">
-                Expert Motorcycle<br><span style="color:#D4451A;">Care & Repair</span>
+                Expert Motorcycle<br><span style="color:#10B981;">Care & Repair</span>
             </h1>
             <p style="color:rgba(255,255,255,0.75);font-size:1.0625rem;max-width:480px;margin-bottom:2rem;line-height:1.7;">
                 From routine oil changes to complete engine overhauls — our certified technicians keep your ride performing at its peak.
@@ -66,35 +442,35 @@
         </div>
         <div class="brand-strip">
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/honda.svg" alt="Honda Logo" class="brand-logo-img"></div>
                 <span class="brand-name">Honda</span>
             </div>
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/yamaha.svg" alt="Yamaha Logo" class="brand-logo-img"></div>
                 <span class="brand-name">Yamaha</span>
             </div>
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/royal-enfield.svg" alt="Royal Enfield Logo" class="brand-logo-img"></div>
                 <span class="brand-name">Royal Enfield</span>
             </div>
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/ktm.svg" alt="KTM Logo" class="brand-logo-img"></div>
                 <span class="brand-name">KTM</span>
             </div>
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/bajaj.svg" alt="Bajaj Logo" class="brand-logo-img"></div>
                 <span class="brand-name">Bajaj</span>
             </div>
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/suzuki.svg" alt="Suzuki Logo" class="brand-logo-img"></div>
                 <span class="brand-name">Suzuki</span>
             </div>
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/tvs.svg" alt="TVS Logo" class="brand-logo-img"></div>
                 <span class="brand-name">TVS</span>
             </div>
             <div class="brand-item">
-                <div class="brand-icon"><i class="fas fa-motorcycle" style="font-size:1.25rem;"></i></div>
+                <div class="brand-icon"><img src="assets/images/brands/hero.svg" alt="Hero MotoCorp Logo" class="brand-logo-img"></div>
                 <span class="brand-name">Hero</span>
             </div>
         </div>
@@ -219,47 +595,58 @@
     }
 </style>
 
-<!-- ═══════════ WORKSHOP SHOWCASE WITH STATS ═══════════ -->
-<section class="section" id="workshop-showcase" style="padding:0;">
-    <div style="position:relative;height:420px;overflow:hidden;">
-        <img src="assets/images/workshop-exterior.jpg" alt="Our motorcycle repair workshop exterior" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(27,31,36,0.92),rgba(27,31,36,0.7));"></div>
-        <div class="container" style="position:relative;z-index:2;height:100%;display:flex;align-items:center;">
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;width:100%;text-align:center;">
-                <div class="stat-item animate-on-scroll">
-                    <div class="stat-value" data-count="15000" data-suffix="+">0</div>
-                    <div class="stat-label">Bikes Serviced</div>
+<!-- ═══════════ HOW IT WORKS (4-Step Process) ═══════════ -->
+<section class="section" id="how-it-works">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-route"></i> Streamlined Workflow</div>
+            <h2>How Our Service Works</h2>
+            <p>From instant online booking to full road-test delivery — enjoy a hassle-free, transparent experience.</p>
+        </div>
+
+        <div class="process-steps-grid animate-on-scroll">
+            <!-- Step 1 -->
+            <div class="process-step-card">
+                <div class="process-step-number">01</div>
+                <div>
+                    <div class="process-step-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="process-step-title">Instant Booking</div>
+                    <p class="process-step-desc">Pick your preferred service and schedule online in under 60 seconds with zero advance payment.</p>
                 </div>
-                <div class="stat-item animate-on-scroll">
-                    <div class="stat-value" data-count="12" data-suffix="+">0</div>
-                    <div class="stat-label">Brands Covered</div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step-card">
+                <div class="process-step-number">02</div>
+                <div>
+                    <div class="process-step-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <div class="process-step-title">21-Point Inspection</div>
+                    <p class="process-step-desc">Our certified master technicians perform a thorough digital health check before touching a bolt inspection.</p>
                 </div>
-                <div class="stat-item animate-on-scroll">
-                    <div class="stat-value" data-count="98" data-suffix="%">0</div>
-                    <div class="stat-label">Customer Satisfaction</div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step-card">
+                <div class="process-step-number">03</div>
+                <div>
+                    <div class="process-step-icon"><i class="fas fa-wrench"></i></div>
+                    <div class="process-step-title">Precision Repair</div>
+                    <p class="process-step-desc">Factory-grade repairs using only 100% genuine OEM spares with real-time WhatsApp video updates.</p>
                 </div>
-                <div class="stat-item animate-on-scroll">
-                    <div class="stat-value" data-count="25" data-suffix="+">0</div>
-                    <div class="stat-label">Expert Technicians</div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step-card">
+                <div class="process-step-number">04</div>
+                <div>
+                    <div class="process-step-icon"><i class="fas fa-motorcycle"></i></div>
+                    <div class="process-step-title">Road Test & Ride</div>
+                    <p class="process-step-desc">Every bike undergoes a dynamic safety road test, foam wash, and is delivered with a 90-day warranty.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<style>
-    @media (max-width: 768px) {
-        #workshop-showcase [style*="grid-template-columns:repeat(4,1fr)"] {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 2rem !important;
-        }
-    }
-    @media (max-width: 360px) {
-        #workshop-showcase [style*="grid-template-columns:repeat(4,1fr)"] {
-            grid-template-columns: 1fr !important;
-        }
-    }
-</style>
 
 <!-- ═══════════ CUSTOMER REVIEWS ═══════════ -->
 <section class="section" id="reviews">
@@ -278,7 +665,9 @@
                 </div>
                 <p class="quote">"Best motorcycle service center in town! They diagnosed an engine issue that two other shops couldn't find. My bike runs like new. Highly recommended!"</p>
                 <div class="author">
-                    <div class="author-avatar">RK</div>
+                    <div class="author-avatar">
+                        <img src="assets/images/rider-rajesh.png" alt="Rajesh Kumar - Royal Enfield Rider">
+                    </div>
                     <div>
                         <div class="author-name">Rajesh Kumar</div>
                         <div class="author-bike">Royal Enfield Classic 350</div>
@@ -292,7 +681,9 @@
                 </div>
                 <p class="quote">"Quick turnaround on my KTM Duke's brake service. They used genuine parts and the braking feels incredibly responsive now. Fair pricing too."</p>
                 <div class="author">
-                    <div class="author-avatar">SP</div>
+                    <div class="author-avatar">
+                        <img src="assets/images/rider-suresh.png" alt="Suresh Patel - KTM Duke Rider">
+                    </div>
                     <div>
                         <div class="author-name">Suresh Patel</div>
                         <div class="author-bike">KTM Duke 390</div>
@@ -306,7 +697,9 @@
                 </div>
                 <p class="quote">"I've been coming here for 3 years now. They take excellent care of my Yamaha R15. The staff is knowledgeable and always explains what needs to be done."</p>
                 <div class="author">
-                    <div class="author-avatar">AM</div>
+                    <div class="author-avatar">
+                        <img src="assets/images/rider-anita.png" alt="Anita Mehta - Yamaha R15 Rider">
+                    </div>
                     <div>
                         <div class="author-name">Anita Mehta</div>
                         <div class="author-bike">Yamaha R15 V4</div>
@@ -317,16 +710,148 @@
     </div>
 </section>
 
-<!-- ═══════════ CTA BANNER ═══════════ -->
-<section id="cta-banner" style="background:var(--secondary);padding:5rem 0;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(212,69,26,0.15),transparent 70%);border-radius:50%;pointer-events:none;"></div>
-    <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(212,69,26,0.08),transparent 70%);border-radius:50%;pointer-events:none;"></div>
-    <div class="container text-center" style="position:relative;z-index:2;">
-        <h2 style="color:#fff;margin-bottom:1rem;font-size:clamp(1.75rem,4vw,2.5rem);">Ready to Give Your Bike the Care It Deserves?</h2>
-        <p style="color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto 2rem;font-size:1rem;">Book an appointment today and experience professional motorcycle service at its finest.</p>
-        <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
-            <a href="contact.html#booking-form" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-            <a href="pricing.html" class="btn btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;">View Pricing</a>
+<!-- ═══════════ POPULAR SERVICE PACKAGES ═══════════ -->
+<section class="section bg-surface" id="popular-packages">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-tags"></i> Transparent Packages</div>
+            <h2>Popular Service Packages</h2>
+            <p>Clear, fixed pricing with no hidden charges. Choose the service that matches your motorcycle's needs.</p>
+        </div>
+
+        <div class="packages-pricing-grid animate-on-scroll">
+            <!-- Package 1: Basic -->
+            <div class="package-pricing-card">
+                <div>
+                    <div style="font-size:0.8125rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Essential Care</div>
+                    <h3 style="margin-top:0.35rem;">General Service</h3>
+                    <div class="package-price-val">₹1,499 <span>/ service</span></div>
+                    <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:1.5rem;">Ideal for periodic commuter and everyday maintenance.</p>
+
+                    <div class="package-features-list">
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Premium Engine Oil & Filter Change</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Digital 21-Point Multi-Point Inspection</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Chain Cleaning, Tensioning & Lube</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Front & Rear Brake Caliper Cleaning</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Complete Pressure Foam Wash</span></div>
+                    </div>
+                </div>
+
+                <a href="contact.html#booking-form" class="btn btn-secondary w-full" style="text-align:center;">
+                    Select Package <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                </a>
+            </div>
+
+            <!-- Package 2: Major (Popular) -->
+            <div class="package-pricing-card featured-package">
+                <span class="package-badge-popular">Most Popular</span>
+                <div>
+                    <div style="font-size:0.8125rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:0.05em;">Comprehensive Care</div>
+                    <h3 style="margin-top:0.35rem;">Major Overhaul</h3>
+                    <div class="package-price-val">₹3,499 <span>/ service</span></div>
+                    <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:1.5rem;">Recommended every 10,000 km or before long touring trips.</p>
+
+                    <div class="package-features-list">
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span><strong>Everything in General Service</strong></span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Throttle Body & Fuel Injector Cleaning</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Spark Plug & Air Filter Replacement</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>DOT4 Hydraulic Brake Fluid Bleed</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Suspension & Steering Cone Check</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span><strong>90-Day Full Service Warranty</strong></span></div>
+                    </div>
+                </div>
+
+                <a href="contact.html#booking-form" class="btn btn-primary w-full" style="text-align:center;">
+                    <i class="fas fa-calendar-check"></i> Book Overhaul
+                </a>
+            </div>
+
+            <!-- Package 3: Superbike -->
+            <div class="package-pricing-card">
+                <div>
+                    <div style="font-size:0.8125rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">High-Performance</div>
+                    <h3 style="margin-top:0.35rem;">Superbike & Track</h3>
+                    <div class="package-price-val">₹6,999 <span>/ service</span></div>
+                    <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:1.5rem;">Tailored for 600cc+ superbikes, track days & adventure machines.</p>
+
+                    <div class="package-features-list">
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Full ECU Diagnostics & Sensor Calibration</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Valve Shim & Desmo Inspection</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>High-Temp Motul 300V / Racing Fluids</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>WP / Ohlins Suspension Rebound Setup</span></div>
+                        <div class="package-feature-item"><i class="fas fa-check-circle"></i><span>Laser Wheel & Chassis Alignment</span></div>
+                    </div>
+                </div>
+
+                <a href="contact.html#booking-form" class="btn btn-secondary w-full" style="text-align:center;">
+                    Select Package <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CTA BANNER (Modern Precision Command Hub) ═══════════ -->
+<section id="cta-banner" class="section" style="background:var(--bg-body);padding:4.5rem 0;">
+    <div class="container">
+        <div class="cta-index-box animate-on-scroll">
+            <div class="cta-index-glow-1"></div>
+            <div class="cta-index-glow-2"></div>
+            
+            <div class="cta-index-content">
+                <!-- Top Row: Badge + Heading + Actions -->
+                <div class="cta-index-main">
+                    <div class="cta-index-badge">
+                        <span class="cta-pulse-dot"></span>
+                        <span>Official Multi-Brand Workshop • Express Slots Open</span>
+                    </div>
+                    <h2 class="cta-index-title">
+                        Ready to Give Your Bike the <span class="cta-gradient-text">Care It Deserves?</span>
+                    </h2>
+                    <p class="cta-index-desc">
+                        From basic fluid tune-ups to complete track overhauls — experience factory-precision service with zero hidden costs.
+                    </p>
+                    <div class="cta-index-actions">
+                        <a href="contact.html#booking-form" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-check"></i> Book Service Appointment
+                        </a>
+                        <a href="pricing.html" class="btn btn-lg cta-glass-btn">
+                            <i class="fas fa-tags"></i> View Transparent Pricing
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bottom Row: 3 Feature Action Tiles -->
+                <div class="cta-index-tiles">
+                    <div class="cta-tile">
+                        <div class="cta-tile-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div>
+                            <div class="cta-tile-title">90-Day Guarantee</div>
+                            <div class="cta-tile-text">Comprehensive warranty on all genuine OEM parts & labor.</div>
+                        </div>
+                    </div>
+                    <div class="cta-tile">
+                        <div class="cta-tile-icon"><i class="fas fa-stopwatch"></i></div>
+                        <div>
+                            <div class="cta-tile-title">120-Min Express</div>
+                            <div class="cta-tile-text">Fast-track routine servicing while you wait in our lounge.</div>
+                        </div>
+                    </div>
+                    <div class="cta-tile">
+                        <div class="cta-tile-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                        <div>
+                            <div class="cta-tile-title">Live Video Updates</div>
+                            <div class="cta-tile-text">Transparent WhatsApp video proof during your service.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assistance Footer Strip -->
+                <div class="cta-index-footer">
+                    <span style="color:rgba(255,255,255,0.6);font-size:0.875rem;">Have questions or need emergency assistance?</span>
+                    <a href="tel:+919876543210" class="cta-hotline-link"><i class="fas fa-phone-alt"></i> Call Hotline: +91 98765 43210</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>

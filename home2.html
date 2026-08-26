@@ -124,7 +124,7 @@
             box-shadow: var(--shadow-card-hover);
         }
         .bento-wide { grid-column: span 2; }
-        .bento-img { height: 220px; overflow: hidden; }
+        .bento-img { height: 260px; overflow: hidden; }
         .bento-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .bento-item:hover .bento-img img { transform: scale(1.05); }
         .bento-body { padding: 1.5rem; }
@@ -140,14 +140,612 @@
             min-height: 200px;
         }
 
-        /* Masonry reviews */
-        .masonry-reviews {
-            column-count: 3;
-            column-gap: 1.25rem;
+        /* Modern Bento Reviews */
+        .reviews-grid-v2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
-        .masonry-reviews .testimonial-card {
-            break-inside: avoid;
+        @media (max-width: 1024px) {
+            .reviews-grid-v2 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .reviews-grid-v2 { grid-template-columns: 1fr; }
+        }
+
+        .review-trust-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.75rem;
+            padding: 0.85rem 1.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--shadow-card);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-heading);
+        }
+
+        .trust-item i.fa-check-circle {
+            color: var(--primary);
+        }
+
+        .trust-rating-pill {
+            background: rgba(245, 158, 11, 0.12);
+            color: #D97706;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .dark .trust-rating-pill {
+            background: rgba(245, 158, 11, 0.18);
+            color: #FBBF24;
+        }
+
+        .testimonial-card-v2 {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-premium);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .testimonial-card-v2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card-v2:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.12), 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .testimonial-card-v2:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-card-v2 .watermark-quote {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            font-size: 3.5rem;
+            line-height: 1;
+            color: var(--primary);
+            opacity: 0.08;
+            pointer-events: none;
+            font-family: serif;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card-v2:hover .watermark-quote {
+            opacity: 0.2;
+            transform: scale(1.08);
+        }
+
+        .review-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 1.25rem;
+        }
+
+        .review-stars-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .review-stars {
+            color: #F59E0B;
+            font-size: 0.8125rem;
+            display: flex;
+            gap: 0.15rem;
+        }
+
+        .review-score {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            background: var(--bg-surface);
+            padding: 0.15rem 0.45rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .verified-badge-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-subtle);
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .review-quote-text {
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: var(--text-heading);
+            margin-bottom: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-service-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.25rem;
+            width: fit-content;
+        }
+
+        .review-service-pill i {
+            color: var(--primary);
+        }
+
+        .review-author-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .review-author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .review-avatar-box {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9375rem;
+            flex-shrink: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .review-avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .review-author-name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-heading);
+            line-height: 1.2;
+        }
+
+        .review-bike-tag {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.2rem;
+        }
+
+        .review-date-text {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* --- High-Impact Bento CTA Section --- */
+        .cta-wrapper-section {
+            padding: 5rem 0;
+            position: relative;
+            background: var(--bg-surface);
+        }
+
+        .cta-bento-box {
+            position: relative;
+            background: linear-gradient(145deg, #131A22 0%, #0D1117 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-3xl);
+            padding: 3.5rem 3rem;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35), 0 0 60px rgba(16, 185, 129, 0.08);
+        }
+
+        .cta-bento-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 992px) {
+            .cta-bento-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .cta-bento-box {
+                padding: 2.5rem 1.75rem;
+            }
+        }
+
+        .cta-glow-orb-1 {
+            position: absolute;
+            top: -120px;
+            right: -100px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 65%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-glow-orb-2 {
+            position: absolute;
+            bottom: -100px;
+            left: -80px;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.4rem 0.95rem;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #34D399;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10B981;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: #FFFFFF;
+            margin-bottom: 1.25rem;
+        }
+
+        .cta-highlight {
+            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+            max-width: 520px;
+        }
+
+        .cta-perks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .cta-perk-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .cta-perk-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6875rem;
+            flex-shrink: 0;
+        }
+
+        .cta-action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-quick-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-2xl);
+            padding: 2rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-quick-card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.35rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-quick-card-subtitle {
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(13, 17, 23, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            color: #FFFFFF;
+            font-size: 0.875rem;
+            margin-bottom: 0.85rem;
+            outline: none;
+            transition: var(--transition-fast);
+            box-sizing: border-box;
+        }
+
+        .cta-form-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+        }
+
+        .cta-form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .cta-form-badge-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.6875rem;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* --- Workshop Gallery Grid --- */
+        .workshop-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .workshop-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .workshop-gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        .gallery-card {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            height: 260px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-premium);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.12);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay-badge {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-card:hover .gallery-overlay-badge {
+            background: rgba(13, 17, 23, 0.96);
+            border-color: var(--primary);
+        }
+
+        .gallery-title {
+            font-family: var(--font-heading);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        .gallery-subtitle {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* --- Modern FAQ Accordion --- */
+        .home2-faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .home2-faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .home2-faq-item:hover {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .home2-faq-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.08);
+        }
+
+        .home2-faq-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            gap: 1rem;
+        }
+
+        .home2-faq-question {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .home2-faq-question i {
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+
+        .home2-faq-toggle {
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-heading);
+            font-size: 0.75rem;
+            transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .home2-faq-item.active .home2-faq-toggle {
+            transform: rotate(180deg);
+            background: var(--primary);
+            color: #FFFFFF;
+            border-color: var(--primary);
+        }
+
+        .home2-faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.65;
+        }
+
+        .home2-faq-item.active .home2-faq-body {
+            max-height: 220px;
+            padding: 0 1.5rem 1.25rem;
         }
 
         @media (max-width: 1024px) {
@@ -163,7 +761,6 @@
             .timeline::before { display: none; }
             .bento-grid { grid-template-columns: 1fr; }
             .bento-wide { grid-column: span 1; }
-            .masonry-reviews { column-count: 1; }
         }
     </style>
 </head>
@@ -182,7 +779,7 @@
                     <i class="fas fa-gear"></i> Premium Service Experience
                 </div>
                 <h1 style="color:#fff;margin-bottom:1.25rem;line-height:1.1;">
-                    Precision Service.<br><span style="color:#D4451A;">Peak Performance.</span>
+                    Precision Service.<br><span style="color:#10B981;">Peak Performance.</span>
                 </h1>
                 <p style="color:rgba(255,255,255,0.65);font-size:1.0625rem;max-width:480px;margin-bottom:2.5rem;">
                     Every motorcycle tells a story. We ensure yours keeps running at its absolute best with factory-grade service and genuine parts.
@@ -277,20 +874,20 @@
                     <p>Complete multi-point inspection including fluid levels, filter checks, spark plugs, and overall mechanical health assessment.</p>
                 </div>
             </div>
-            <!-- Bento 2: Icon card -->
+            <!-- Bento 2: Oil Change with image -->
             <div class="bento-item">
-                <div class="bento-icon-card">
-                    <div class="icon-box icon-box-lg" style="margin-bottom:1rem;"><i class="fas fa-oil-can"></i></div>
+                <div class="bento-img"><img src="assets/images/service-oil.jpg" alt="Premium motorcycle oil change"></div>
+                <div class="bento-body">
                     <h4>Oil Change</h4>
-                    <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.5rem;">Premium engine oil replacement with genuine filters for peak lubrication.</p>
+                    <p>Premium synthetic engine oil replacement with genuine OEM filters for peak lubrication.</p>
                 </div>
             </div>
-            <!-- Bento 3: Icon card -->
+            <!-- Bento 3: Tyre Replacement with image -->
             <div class="bento-item">
-                <div class="bento-icon-card">
-                    <div class="icon-box icon-box-lg" style="margin-bottom:1rem;"><i class="fas fa-circle-notch"></i></div>
+                <div class="bento-img"><img src="assets/images/service-tyre.jpg" alt="Motorcycle tyre replacement and balancing"></div>
+                <div class="bento-body">
                     <h4>Tyre Replacement</h4>
-                    <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.5rem;">All major tyre brands fitted with precision balancing and alignment.</p>
+                    <p>All major tyre brands fitted with digital wheel balancing, laser alignment, and pressure checks.</p>
                 </div>
             </div>
             <!-- Bento 4: Wide with image -->
@@ -320,28 +917,36 @@
 
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:700px;margin:0 auto;" class="animate-on-scroll" id="brand-grid-inner">
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">Honda</div>
+                <div class="brand-icon"><img src="assets/images/brands/honda.svg" alt="Honda Logo" class="brand-logo-img"></div>
+                <span class="brand-name">Honda</span>
             </div>
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">Yamaha</div>
+                <div class="brand-icon"><img src="assets/images/brands/yamaha.svg" alt="Yamaha Logo" class="brand-logo-img"></div>
+                <span class="brand-name">Yamaha</span>
             </div>
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">Royal Enfield</div>
+                <div class="brand-icon"><img src="assets/images/brands/royal-enfield.svg" alt="Royal Enfield Logo" class="brand-logo-img"></div>
+                <span class="brand-name">Royal Enfield</span>
             </div>
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">KTM</div>
+                <div class="brand-icon"><img src="assets/images/brands/ktm.svg" alt="KTM Logo" class="brand-logo-img"></div>
+                <span class="brand-name">KTM</span>
             </div>
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">Bajaj</div>
+                <div class="brand-icon"><img src="assets/images/brands/bajaj.svg" alt="Bajaj Logo" class="brand-logo-img"></div>
+                <span class="brand-name">Bajaj</span>
             </div>
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">Suzuki</div>
+                <div class="brand-icon"><img src="assets/images/brands/suzuki.svg" alt="Suzuki Logo" class="brand-logo-img"></div>
+                <span class="brand-name">Suzuki</span>
             </div>
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">TVS</div>
+                <div class="brand-icon"><img src="assets/images/brands/tvs.svg" alt="TVS Logo" class="brand-logo-img"></div>
+                <span class="brand-name">TVS</span>
             </div>
             <div class="brand-item" style="opacity:1;flex-direction:column;align-items:center;">
-                <div class="brand-icon" style="width:5rem;height:5rem;border-radius:50%;font-size:0.8125rem;">Hero</div>
+                <div class="brand-icon"><img src="assets/images/brands/hero.svg" alt="Hero MotoCorp Logo" class="brand-logo-img"></div>
+                <span class="brand-name">Hero</span>
             </div>
         </div>
 
@@ -357,62 +962,327 @@
     }
 </style>
 
-<!-- ═══════════ CUSTOMER REVIEWS (Masonry) ═══════════ -->
-<section class="section bg-surface" id="reviews2">
+<!-- ═══════════ INSIDE OUR WORKSHOP (Facility Gallery) ═══════════ -->
+<section class="section" id="workshop-gallery">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <div class="section-label"><i class="fas fa-star"></i> Testimonials</div>
-            <h2>Riders Trust Us</h2>
-            <p>Hear from motorcycle owners who rely on our expert service.</p>
+            <div class="section-label"><i class="fas fa-camera"></i> Workshop Tour</div>
+            <h2>Inside Our Superbike Facility</h2>
+            <p>Take a look inside our specialized workshop bays equipped with state-of-the-art diagnostic and tuning gear.</p>
         </div>
 
-        <div class="masonry-reviews animate-on-scroll">
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Exceptional service every single time. The team goes above and beyond to ensure my Ducati is running perfectly. Their attention to detail is unmatched."</p>
-                <div class="author">
-                    <div class="author-avatar">VR</div>
-                    <div><div class="author-name">Vikram Rao</div><div class="author-bike">Ducati Panigale V4</div></div>
+        <div class="workshop-gallery-grid animate-on-scroll">
+            <!-- Gallery Item 1 -->
+            <div class="gallery-card">
+                <img src="assets/images/gallery-1.jpg" alt="Specialized diagnostic bay with hydraulic motorcycle lift">
+                <div class="gallery-overlay-badge">
+                    <div>
+                        <div class="gallery-title">Hydraulic Lift & Dyno Bay</div>
+                        <div class="gallery-subtitle">6 Dedicated Service Bays</div>
+                    </div>
+                    <i class="fas fa-arrow-up-right-from-square" style="color:var(--primary);font-size:0.875rem;"></i>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Got my chain replaced and aligned perfectly. Fair prices and friendly service."</p>
-                <div class="author">
-                    <div class="author-avatar">DP</div>
-                    <div><div class="author-name">Deepak Pandey</div><div class="author-bike">Bajaj Pulsar NS200</div></div>
+
+            <!-- Gallery Item 2 -->
+            <div class="gallery-card">
+                <img src="assets/images/gallery-2.jpg" alt="Mechanic tuning engine assembly on workbench">
+                <div class="gallery-overlay-badge">
+                    <div>
+                        <div class="gallery-title">Engine Calibration Bench</div>
+                        <div class="gallery-subtitle">Micrometer & Valve Shimming</div>
+                    </div>
+                    <i class="fas fa-arrow-up-right-from-square" style="color:var(--primary);font-size:0.875rem;"></i>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                <p class="quote">"I brought my old Bullet for a complete overhaul. They treated it like their own. The engine purrs now — couldn't be happier with the quality of work and transparent pricing."</p>
-                <div class="author">
-                    <div class="author-avatar">MJ</div>
-                    <div><div class="author-name">Manoj Joshi</div><div class="author-bike">Royal Enfield Bullet 500</div></div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Professional diagnostic service found an electrical issue quickly. Saved me a lot of money compared to the dealership."</p>
-                <div class="author">
-                    <div class="author-avatar">NS</div>
-                    <div><div class="author-name">Neha Sharma</div><div class="author-bike">Honda CB300R</div></div>
+
+            <!-- Gallery Item 3 -->
+            <div class="gallery-card">
+                <img src="assets/images/service-brake.jpg" alt="Brembo brake calibration and hydraulic fluid bleeding">
+                <div class="gallery-overlay-badge">
+                    <div>
+                        <div class="gallery-title">Braking & Suspension Lab</div>
+                        <div class="gallery-subtitle">Brembo / Ohlins Certified</div>
+                    </div>
+                    <i class="fas fa-arrow-up-right-from-square" style="color:var(--primary);font-size:0.875rem;"></i>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════ CONTACT PREVIEW ═══════════ -->
-<section class="section" id="contact-preview" style="background:var(--secondary);position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-100px;right:-50px;width:500px;height:500px;background:radial-gradient(circle,rgba(212,69,26,0.12),transparent 60%);border-radius:50%;"></div>
-    <div class="container text-center" style="position:relative;z-index:2;">
-        <div class="section-label" style="color:rgba(255,255,255,0.5);justify-content:center;"><i class="fas fa-phone"></i> Get in Touch</div>
-        <h2 style="color:#fff;margin-bottom:1rem;">Schedule Your Service Today</h2>
-        <p style="color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto 2rem;">Call us or fill out the form — we'll get your motorcycle sorted in no time.</p>
-        <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
-            <a href="contact.html#booking-form" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-            <a href="tel:+919876543210" class="btn btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;"><i class="fas fa-phone"></i> +91 98765 43210</a>
+<!-- ═══════════ CUSTOMER REVIEWS (Modern Bento Grid) ═══════════ -->
+<section class="section bg-surface" id="reviews2">
+    <div class="container">
+        <div class="section-header animate-on-scroll" style="margin-bottom:1.5rem;">
+            <div class="section-label"><i class="fas fa-star"></i> Real Rider Experiences</div>
+            <h2>Riders Trust Moto Service Pro</h2>
+            <p>Read authentic feedback from motorcycle owners who trust us with their machines.</p>
+        </div>
+
+        <!-- Social Proof Trust Bar -->
+        <div class="review-trust-bar animate-on-scroll">
+            <div class="trust-item">
+                <span class="trust-rating-pill"><i class="fas fa-star"></i> 4.9 / 5.0</span>
+                <span>Overall Rating</span>
+            </div>
+            <div style="width:1px;height:18px;background:var(--border-default);"></div>
+            <div class="trust-item">
+                <i class="fab fa-google" style="color:#4285F4;font-size:0.9375rem;"></i>
+                <span>520+ Google Reviews</span>
+            </div>
+            <div style="width:1px;height:18px;background:var(--border-default);"></div>
+            <div class="trust-item">
+                <i class="fas fa-check-circle" style="color:var(--primary);font-size:0.9375rem;"></i>
+                <span>100% Verified Customers</span>
+            </div>
+        </div>
+
+        <div class="reviews-grid-v2 animate-on-scroll">
+            <!-- Card 1 -->
+            <div class="testimonial-card-v2">
+                <div class="watermark-quote">“</div>
+                <div>
+                    <div class="review-card-header">
+                        <div class="review-stars-wrapper">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="review-score">5.0</span>
+                        </div>
+                        <span class="verified-badge-chip"><i class="fas fa-check-circle"></i> Verified Rider</span>
+                    </div>
+                    <div class="review-service-pill"><i class="fas fa-wrench"></i> Desmo Service & Tuning</div>
+                    <p class="review-quote-text">"Exceptional service every single time. The team goes above and beyond to ensure my Panigale is running flawlessly. Their attention to detail on high-performance superbikes is unmatched."</p>
+                </div>
+                <div class="review-author-footer">
+                    <div class="review-author-info">
+                        <div class="review-avatar-box">
+                            <img src="assets/images/rider-vikram.jpg" alt="Vikram Rao - Ducati Rider">
+                        </div>
+                        <div>
+                            <div class="review-author-name">Vikram Rao</div>
+                            <div class="review-bike-tag"><i class="fas fa-motorcycle"></i> Ducati Panigale V4</div>
+                        </div>
+                    </div>
+                    <span class="review-date-text">2 weeks ago</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="testimonial-card-v2">
+                <div class="watermark-quote">“</div>
+                <div>
+                    <div class="review-card-header">
+                        <div class="review-stars-wrapper">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="review-score">4.9</span>
+                        </div>
+                        <span class="verified-badge-chip"><i class="fas fa-check-circle"></i> Verified Rider</span>
+                    </div>
+                    <div class="review-service-pill"><i class="fas fa-cog"></i> Complete Engine Overhaul</div>
+                    <p class="review-quote-text">"I brought my old Bullet 500 for a complete mechanical overhaul. They treated it like their own treasure. The engine purrs like new now — completely transparent pricing and genuine spares."</p>
+                </div>
+                <div class="review-author-footer">
+                    <div class="review-author-info">
+                        <div class="review-avatar-box">
+                            <img src="assets/images/rider-manoj.jpg" alt="Manoj Joshi - Bullet Rider">
+                        </div>
+                        <div>
+                            <div class="review-author-name">Manoj Joshi</div>
+                            <div class="review-bike-tag"><i class="fas fa-motorcycle"></i> Royal Enfield Bullet 500</div>
+                        </div>
+                    </div>
+                    <span class="review-date-text">3 weeks ago</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="testimonial-card-v2">
+                <div class="watermark-quote">“</div>
+                <div>
+                    <div class="review-card-header">
+                        <div class="review-stars-wrapper">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="review-score">5.0</span>
+                        </div>
+                        <span class="verified-badge-chip"><i class="fas fa-check-circle"></i> Verified Rider</span>
+                    </div>
+                    <div class="review-service-pill"><i class="fas fa-bolt"></i> Electrical Diagnostics & ECU</div>
+                    <p class="review-quote-text">"Their master diagnostic tool pinpointed a stubborn ECU glitch in under an hour. Saved me thousands compared to the main dealer. Highly professional and courteous."</p>
+                </div>
+                <div class="review-author-footer">
+                    <div class="review-author-info">
+                        <div class="review-avatar-box">
+                            <img src="assets/images/rider-neha.jpg" alt="Neha Sharma - Honda Rider">
+                        </div>
+                        <div>
+                            <div class="review-author-name">Neha Sharma</div>
+                            <div class="review-bike-tag"><i class="fas fa-motorcycle"></i> Honda CB300R</div>
+                        </div>
+                    </div>
+                    <span class="review-date-text">1 month ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FREQUENTLY ASKED QUESTIONS ═══════════ -->
+<section class="section" id="home2-faq" style="background:var(--bg-body);">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-circle-question"></i> Rider FAQ</div>
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about our service standards, OEM parts, and warranty.</p>
+        </div>
+
+        <div class="home2-faq-container animate-on-scroll">
+            <!-- FAQ 1 -->
+            <div class="home2-faq-item active">
+                <div class="home2-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                    <div class="home2-faq-question">
+                        <i class="fas fa-clock"></i>
+                        <span>How often should I get my motorcycle serviced?</span>
+                    </div>
+                    <div class="home2-faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="home2-faq-body">
+                    For daily commuting motorcycles, we recommend a routine service every 3,000 to 5,000 km or every 6 months. For high-performance superbikes (KTM Duke 390, Ducati, Ninja, Triumph), synthetic oil and filter checks should be done every 3,000 km or before aggressive track sessions.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="home2-faq-item">
+                <div class="home2-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                    <div class="home2-faq-question">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Do you provide genuine OEM parts and warranty on repairs?</span>
+                    </div>
+                    <div class="home2-faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="home2-faq-body">
+                    Yes, 100%. We source exclusively from authorized manufacturers (Yamaha Genuine, Brembo, Motul, NGK, D.I.D) and provide an unconditional 90-day parts and labor warranty on every major overhaul.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="home2-faq-item">
+                <div class="home2-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                    <div class="home2-faq-question">
+                        <i class="fas fa-video"></i>
+                        <span>Can I get live service updates while my bike is at the shop?</span>
+                    </div>
+                    <div class="home2-faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="home2-faq-body">
+                    Absolutely! Our lead mechanics send photo and video inspection reports directly to your WhatsApp before replacing any component, ensuring complete transparency with zero surprise charges.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="home2-faq-item">
+                <div class="home2-faq-header" onclick="this.parentElement.classList.toggle('active')">
+                    <div class="home2-faq-question">
+                        <i class="fas fa-truck-pickup"></i>
+                        <span>Do you offer motorcycle pickup and drop service?</span>
+                    </div>
+                    <div class="home2-faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="home2-faq-body">
+                    Yes, we offer doorstep flatbed motorcycle pickup and drop services across the city. You can select pickup when booking online or by calling our direct hotline.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ HIGH-IMPACT BENTO CTA ═══════════ -->
+<section class="cta-wrapper-section" id="contact-preview">
+    <div class="container">
+        <div class="cta-bento-box animate-on-scroll">
+            <div class="cta-glow-orb-1"></div>
+            <div class="cta-glow-orb-2"></div>
+
+            <div class="cta-bento-grid">
+                <!-- Left: Headline & Key Benefits -->
+                <div>
+                    <div class="cta-status-pill">
+                        <span class="cta-status-dot"></span>
+                        <span>Workshop Open Today • Same-Day Express Slots</span>
+                    </div>
+
+                    <h2 class="cta-title">
+                        Ready for Peak Performance?<br>
+                        <span class="cta-highlight">Book Your Service in 60s.</span>
+                    </h2>
+
+                    <p class="cta-desc">
+                        Experience precision engineering, factory-certified master mechanics, and transparent pricing tailored for high-performance rides.
+                    </p>
+
+                    <div class="cta-perks-list">
+                        <div class="cta-perk-item">
+                            <div class="cta-perk-icon"><i class="fas fa-check"></i></div>
+                            <span>Free 21-Point Digital Multi-Point Health Check</span>
+                        </div>
+                        <div class="cta-perk-item">
+                            <div class="cta-perk-icon"><i class="fas fa-shield-alt"></i></div>
+                            <span>100% Genuine OEM Spares with 90-Day Warranty</span>
+                        </div>
+                        <div class="cta-perk-item">
+                            <div class="cta-perk-icon"><i class="fas fa-video"></i></div>
+                            <span>Live WhatsApp Photo & Video Service Updates</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-action-buttons">
+                        <a href="contact.html#booking-form" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-check"></i> Book Online Now
+                        </a>
+                        <a href="tel:+919876543210" class="btn btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);">
+                            <i class="fas fa-phone-alt"></i> +91 98765 43210
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Quick Booking Card -->
+                <div>
+                    <div class="cta-quick-card">
+                        <div class="cta-quick-card-title">
+                            <i class="fas fa-bolt" style="color:var(--primary);"></i>
+                            <span>Express Callback & Booking</span>
+                        </div>
+                        <p class="cta-quick-card-subtitle">Leave your details and our lead technician will confirm your slot within 15 mins.</p>
+
+                        <form id="cta-quick-form" onsubmit="event.preventDefault(); alert('Booking request received! Our team will call you shortly.'); this.reset();">
+                            <input type="text" class="cta-form-input" placeholder="Your Name" required>
+                            <input type="tel" class="cta-form-input" placeholder="Phone Number (+91)" required>
+                            <select class="cta-form-input" style="cursor:pointer;" required>
+                                <option value="" disabled selected>Select Motorcycle Brand</option>
+                                <option>Royal Enfield</option>
+                                <option>KTM / Husqvarna</option>
+                                <option>Yamaha</option>
+                                <option>Honda</option>
+                                <option>Ducati / BMW / Kawasaki</option>
+                                <option>Bajaj / TVS / Other</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary w-full" style="padding:0.875rem;font-weight:600;">
+                                <i class="fas fa-paper-plane"></i> Request Express Slot
+                            </button>
+                        </form>
+
+                        <div class="cta-form-badge-footer">
+                            <i class="fas fa-lock" style="color:var(--primary);"></i>
+                            <span>Zero Advance • Free Cancellation Anytime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

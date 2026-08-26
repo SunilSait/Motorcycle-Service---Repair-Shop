@@ -86,7 +86,7 @@
         .coming-social-link:hover {
             border-color: var(--primary);
             color: var(--primary);
-            background: rgba(212,69,26,0.1);
+            background: rgba(16,185,129,0.1);
         }
         @media (max-width: 480px) {
             .subscribe-form { flex-direction: column; }
@@ -99,14 +99,27 @@
 <div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;max-width:1200px;margin:0 auto;width:100%;">
     <a href="index.html" class="nav-logo" aria-label="Moto Service Pro Home" style="opacity:0.85;">
         <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="64" height="64" rx="14" fill="#D4451A"/>
-            <path d="M18 34c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-            <circle cx="22" cy="38" r="6" stroke="white" stroke-width="3" fill="none"/>
-            <circle cx="42" cy="38" r="6" stroke="white" stroke-width="3" fill="none"/>
-            <circle cx="22" cy="38" r="2" fill="white"/>
-            <circle cx="42" cy="38" r="2" fill="white"/>
-            <path d="M28 38h8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M30 27l3-7 3 7" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+                <linearGradient id="motoLogoGradCS" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#10B981"/>
+                    <stop offset="100%" stop-color="#047857"/>
+                </linearGradient>
+                <linearGradient id="motoAccentGradCS" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6EE7B7"/>
+                    <stop offset="100%" stop-color="#34D399"/>
+                </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="16" fill="url(#motoLogoGradCS)"/>
+            <rect x="1.5" y="1.5" width="61" height="61" rx="14.5" stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"/>
+            <circle cx="17" cy="42" r="8" stroke="#FFFFFF" stroke-width="3"/>
+            <circle cx="17" cy="42" r="2.5" fill="#FFFFFF"/>
+            <circle cx="47" cy="42" r="8" stroke="#FFFFFF" stroke-width="3"/>
+            <circle cx="47" cy="42" r="2.5" fill="#FFFFFF"/>
+            <path d="M17 42L25 32H36L47 42" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 28.5L27 28.5L34 22C36.5 20.5 41 21 44 25L47.5 32" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M40 23L47 42" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M36.5 17L39.5 23" stroke="url(#motoAccentGradCS)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M49 26H54" stroke="url(#motoAccentGradCS)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
         <div class="nav-logo-text">
             <span class="brand-top" style="color:#fff;">MOTO</span>
@@ -127,7 +140,7 @@
 <div class="fullscreen-content">
     <div style="max-width:540px;">
         <!-- Decorative glow -->
-        <div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(212,69,26,0.08),transparent 65%);border-radius:50%;pointer-events:none;"></div>
+        <div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.08),transparent 65%);border-radius:50%;pointer-events:none;"></div>
 
         <div style="position:relative;z-index:2;">
             <div class="section-label" style="color:rgba(255,255,255,0.5);justify-content:center;margin-bottom:1rem;">

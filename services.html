@@ -87,6 +87,238 @@
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
         }
+
+        /* --- Split CTA with Image for Services Page --- */
+        .services-cta-wrapper {
+            background: linear-gradient(145deg, #131B24 0%, #0B1017 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-3xl);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 50px rgba(16, 185, 129, 0.08);
+        }
+
+        .services-cta-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 2.5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-cta-img-container {
+            position: relative;
+            height: 320px;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .services-cta-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .services-cta-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .services-cta-badge {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.25rem;
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-full);
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #34D399;
+        }
+
+        @media (max-width: 992px) {
+            .services-cta-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .services-cta-wrapper {
+                padding: 2.5rem 1.5rem;
+            }
+            .services-cta-img-container {
+                height: 240px;
+            }
+        }
+
+        /* --- 21-Point Inspection Grid --- */
+        .inspection-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .inspection-categories-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .inspection-categories-grid { grid-template-columns: 1fr; }
+        }
+
+        .inspection-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 1.75rem 1.5rem;
+            transition: var(--transition-premium);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inspection-category-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.1);
+        }
+
+        .inspection-cat-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .inspection-cat-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: var(--radius-lg);
+            background: var(--primary-subtle);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .inspection-cat-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.15rem;
+        }
+
+        .inspection-cat-count {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .inspection-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            flex-grow: 1;
+        }
+
+        .inspection-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            color: var(--text-body);
+            line-height: 1.4;
+        }
+
+        .inspection-item i {
+            color: var(--primary);
+            font-size: 0.6875rem;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Genuine Spares Grid --- */
+        .spares-guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .spares-guarantee-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .spares-guarantee-grid { grid-template-columns: 1fr; }
+        }
+
+        .spare-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 1.75rem 1.5rem;
+            transition: var(--transition-premium);
+            text-align: left;
+        }
+
+        .spare-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.1);
+        }
+
+        .spare-icon-wrap {
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: var(--radius-xl);
+            background: var(--primary-subtle);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            transition: var(--transition-smooth);
+        }
+
+        .spare-card:hover .spare-icon-wrap {
+            background: var(--primary);
+            color: #FFFFFF;
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .spare-title {
+            font-family: var(--font-heading);
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .spare-desc {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .spare-brand-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-subtle);
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-full);
+        }
     </style>
 </head>
 <body>
@@ -96,7 +328,11 @@
 
 <!-- ═══════════ PAGE HEADER ═══════════ -->
 <div class="page-header" style="text-align:center;">
-    <div class="container">
+    <div class="page-header-bg">
+        <img src="assets/images/header-services.jpg" alt="Motorcycle engine diagnostic and performance tuning service">
+    </div>
+    <div class="page-header-overlay"></div>
+    <div class="container animate-on-scroll">
         <div class="breadcrumb" style="justify-content:center;">
             <a href="index.html">Home</a>
             <span class="separator"><i class="fas fa-chevron-right" style="font-size:0.5rem;"></i></span>
@@ -185,7 +421,7 @@
                         <div class="icon-box"><i class="fas fa-gauge-high"></i></div>
                         <h3 style="margin-bottom:0;">Brake Servicing</h3>
                     </div>
-                    <p>Complete brake system inspection and servicing for maximum stopping power. We service both disc and drum brakes with genuine replacement parts.</p>
+                    <p>Complete brake system inspection and servicing for maximum stopping power. We service both disc and drum brakes with replacement parts.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> Brake pad replacement</li>
                         <li><i class="fas fa-check-circle"></i> Disc rotor inspection & resurfacing</li>
@@ -261,8 +497,93 @@
     </div>
 </section>
 
+<!-- ═══════════ 21-POINT INSPECTION BREAKDOWN ═══════════ -->
+<section class="section bg-surface" id="inspection-breakdown">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-label"><i class="fas fa-clipboard-check"></i> Standard On All Services</div>
+            <h2>Complimentary 21-Point Health Check</h2>
+            <p>Every motorcycle entering our workshop receives a comprehensive digital inspection before any wrenches turn.</p>
+        </div>
+
+        <div class="inspection-categories-grid animate-on-scroll">
+            <!-- Cat 1: Engine & Drivetrain -->
+            <div class="inspection-category-card">
+                <div class="inspection-cat-header">
+                    <div class="inspection-cat-icon"><i class="fas fa-cogs"></i></div>
+                    <div>
+                        <div class="inspection-cat-title">Engine & Drivetrain</div>
+                        <div class="inspection-cat-count">6 Checkpoints</div>
+                    </div>
+                </div>
+                <div class="inspection-list">
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Engine Oil Level & Viscosity</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Spark Plug Tip Condition</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Throttle Play & Cable Friction</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Clutch Free-Play & Engagement</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Drive Chain Slack & Tension</span></div>
+                </div>
+            </div>
+
+            <!-- Cat 2: Braking & Safety -->
+            <div class="inspection-category-card">
+                <div class="inspection-cat-header">
+                    <div class="inspection-cat-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div>
+                        <div class="inspection-cat-title">Braking & Safety</div>
+                        <div class="inspection-cat-count">5 Checkpoints</div>
+                    </div>
+                </div>
+                <div class="inspection-list">
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Front & Rear Brake Pad Wear</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Disc Rotor Thickness & Truing</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Hydraulic Brake Fluid Moisture</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Brake Lines & Caliper Seals</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>ABS Wheel Speed Sensor Read</span></div>
+                </div>
+            </div>
+
+            <!-- Cat 3: Wheels & Suspension -->
+            <div class="inspection-category-card">
+                <div class="inspection-cat-header">
+                    <div class="inspection-cat-icon"><i class="fas fa-circle-notch"></i></div>
+                    <div>
+                        <div class="inspection-cat-title">Wheels & Suspension</div>
+                        <div class="inspection-cat-count">5 Checkpoints</div>
+                    </div>
+                </div>
+                <div class="inspection-list">
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Tyre Tread Depth & PSI</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Front Fork Seals & Oil Leaks</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Rear Monoshock Damping</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Wheel Rim Bend & Spokes</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Steering Cone Bearing Play</span></div>
+                </div>
+            </div>
+
+            <!-- Cat 4: Electrical & Diagnostics -->
+            <div class="inspection-category-card">
+                <div class="inspection-cat-header">
+                    <div class="inspection-cat-icon"><i class="fas fa-bolt"></i></div>
+                    <div>
+                        <div class="inspection-cat-title">Electrical & Controls</div>
+                        <div class="inspection-cat-count">5 Checkpoints</div>
+                    </div>
+                </div>
+                <div class="inspection-list">
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Battery Voltage & Cranking Amps</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>ECU Scanner DTC Error Scan</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Headlight & Beam Calibration</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Brake Switch & Signal Lights</span></div>
+                    <div class="inspection-item"><i class="fas fa-check-circle"></i><span>Side Stand Sensor Interlock</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ═══════════ SERVICE PROCESS ═══════════ -->
-<section class="section bg-surface" id="service-process">
+<section class="section" id="service-process">
     <div class="container">
         <div class="section-header animate-on-scroll">
             <div class="section-label"><i class="fas fa-route"></i> How It Works</div>
@@ -274,7 +595,7 @@
             <div class="process-step">
                 <div class="process-number">1</div>
                 <h4>Book Online</h4>
-                <p>Pick a date and service type through our booking form or give us a call.</p>
+                <p>Pick a date and service type through our booking form or a call.</p>
             </div>
             <div class="process-step">
                 <div class="process-number">2</div>
@@ -284,7 +605,7 @@
             <div class="process-step">
                 <div class="process-number">3</div>
                 <h4>Expert Service</h4>
-                <p>Our certified technicians inspect and service your motorcycle with care.</p>
+                <p>Our certified technicians inspect and service your motorcycle.</p>
             </div>
             <div class="process-step">
                 <div class="process-number">4</div>
@@ -295,52 +616,111 @@
     </div>
 </section>
 
-<!-- ═══════════ SERVICE REVIEWS ═══════════ -->
-<section class="section" id="service-reviews">
+<!-- ═══════════ GENUINE SPARES & LUBRICANTS GUARANTEE ═══════════ -->
+<section class="section bg-surface" id="genuine-spares">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <div class="section-label"><i class="fas fa-star"></i> Customer Feedback</div>
-            <h2>What Riders Say About Our Services</h2>
+            <div class="section-label"><i class="fas fa-certificate"></i> Factory Authenticity</div>
+            <h2>100% Genuine Spares & Fluids</h2>
+            <p>We strictly use OEM-certified parts and track-proven lubricants to preserve your factory warranty and performance.</p>
         </div>
 
-        <div class="grid grid-3">
-            <div class="testimonial-card animate-on-scroll">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Got a complete engine diagnostic done. They found the exact issue within an hour and fixed it the same day. Transparent pricing and professional work."</p>
-                <div class="author">
-                    <div class="author-avatar">PK</div>
-                    <div><div class="author-name">Pradeep Khanna</div><div class="author-bike">Suzuki Gixxer SF 250</div></div>
-                </div>
+        <div class="spares-guarantee-grid animate-on-scroll">
+            <!-- Spare 1: Lubricants -->
+            <div class="spare-card">
+                <div class="spare-icon-wrap"><i class="fas fa-oil-can"></i></div>
+                <div class="spare-title">Motul & Liqui Moly</div>
+                <p class="spare-desc">100% synthetic Ester-core engine oils engineered for extreme thermal shear resistance and slick shifts.</p>
+                <span class="spare-brand-tag">300V • 7100 • Street Race</span>
             </div>
-            <div class="testimonial-card animate-on-scroll">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Excellent tyre replacement service. They had my preferred brand in stock and balanced the wheels perfectly. Best ride quality I've had."</p>
-                <div class="author">
-                    <div class="author-avatar">AK</div>
-                    <div><div class="author-name">Arun Krishnan</div><div class="author-bike">TVS Apache RTR 200</div></div>
-                </div>
+
+            <!-- Spare 2: Braking -->
+            <div class="spare-card">
+                <div class="spare-icon-wrap"><i class="fas fa-stopwatch-20"></i></div>
+                <div class="spare-title">Brembo & Nissin</div>
+                <p class="spare-desc">OEM sintered and organic brake pads delivering progressive bite with zero brake fade under heavy load.</p>
+                <span class="spare-brand-tag">Sintered • Ceramic • OEM</span>
             </div>
-            <div class="testimonial-card animate-on-scroll">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                <p class="quote">"Regular servicing here for my Honda Activa. Always thorough, always on time, and the prices are very reasonable. Couldn't ask for more!"</p>
-                <div class="author">
-                    <div class="author-avatar">SM</div>
-                    <div><div class="author-name">Sunita Mishra</div><div class="author-bike">Honda Activa 6G</div></div>
-                </div>
+
+            <!-- Spare 3: Drive System -->
+            <div class="spare-card">
+                <div class="spare-icon-wrap"><i class="fas fa-link"></i></div>
+                <div class="spare-title">D.I.D & Rolon Chains</div>
+                <p class="spare-desc">Gold X-Ring heavy-duty drive chains with case-hardened alloy sprockets for maximum mileage.</p>
+                <span class="spare-brand-tag">X-Ring • O-Ring • Brass</span>
+            </div>
+
+            <!-- Spare 4: Ignition -->
+            <div class="spare-card">
+                <div class="spare-icon-wrap"><i class="fas fa-bolt-lightning"></i></div>
+                <div class="spare-title">NGK Laser Iridium</div>
+                <p class="spare-desc">Ultra-fine 0.6mm laser-welded iridium electrode spark plugs for instantaneous throttle response.</p>
+                <span class="spare-brand-tag">Iridium IX • OEM Spark</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════ CTA ═══════════ -->
-<section style="background:var(--secondary);padding:4rem 0;text-align:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-80px;right:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(212,69,26,0.15),transparent 70%);border-radius:50%;"></div>
-    <div class="container" style="position:relative;z-index:2;">
-        <h2 style="color:#fff;margin-bottom:0.75rem;">Need a Service? Let's Get Started</h2>
-        <p style="color:rgba(255,255,255,0.55);margin-bottom:2rem;">Book your appointment today or check our pricing for transparent costs.</p>
-        <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
-            <a href="contact.html#booking-form" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-            <a href="pricing.html" class="btn" style="border-color:rgba(255,255,255,0.2);color:#fff;">View Pricing</a>
+
+
+<!-- ═══════════ CTA (Split with Workshop Image) ═══════════ -->
+<section class="section" style="padding:4.5rem 0;background:var(--bg-body);">
+    <div class="container">
+        <div class="services-cta-wrapper animate-on-scroll">
+            <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(16,185,129,0.18),transparent 70%);border-radius:50%;pointer-events:none;"></div>
+            <div style="position:absolute;bottom:-100px;left:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(16,185,129,0.1),transparent 65%);border-radius:50%;pointer-events:none;"></div>
+
+            <div class="services-cta-grid">
+                <!-- Left: Content & Actions -->
+                <div>
+                    <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);padding:0.35rem 0.85rem;border-radius:var(--radius-full);font-size:0.75rem;font-weight:600;color:#34D399;margin-bottom:1.25rem;">
+                        <span style="width:8px;height:8px;background:#10B981;border-radius:50%;box-shadow:0 0 8px #10B981;"></span>
+                        <span>Official Multi-Brand Workshop • Express Slots Open</span>
+                    </div>
+
+                    <h2 style="color:#fff;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.2;margin-bottom:1rem;">
+                        Need a Service?<br>
+                        <span style="background:linear-gradient(135deg, #10B981 0%, #34D399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Let's Get Started</span>
+                    </h2>
+
+                    <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.6;margin-bottom:1.5rem;">
+                        Book your appointment today or explore our transparent pricing. Our factory-certified master mechanics are ready to inspect, tune, and service your ride with zero hidden costs.
+                    </p>
+
+                    <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
+                        <div style="display:flex;align-items:center;gap:0.65rem;color:rgba(255,255,255,0.85);font-size:0.875rem;">
+                            <i class="fas fa-check-circle" style="color:var(--primary);"></i>
+                            <span>100% Genuine OEM Spares with 90-Day Warranty</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.65rem;color:rgba(255,255,255,0.85);font-size:0.875rem;">
+                            <i class="fas fa-check-circle" style="color:var(--primary);"></i>
+                            <span>Free 21-Point Digital Multi-Point Health Check</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.65rem;color:rgba(255,255,255,0.85);font-size:0.875rem;">
+                            <i class="fas fa-check-circle" style="color:var(--primary);"></i>
+                            <span>Live WhatsApp Photo & Video Service Updates</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                        <a href="contact.html#booking-form" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-check"></i> Book Appointment
+                        </a>
+                        <a href="pricing.html" class="btn btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);">
+                            <i class="fas fa-tags"></i> View Pricing
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Image with Floating Badge -->
+                <div class="services-cta-img-container">
+                    <img src="assets/images/hero-workshop.jpg" alt="Active motorcycle workshop facility with service bays">
+                    <div class="services-cta-badge">
+                        <i class="fas fa-warehouse"></i>
+                        <span>6 Active Service Bays • Open Mon–Sat</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
