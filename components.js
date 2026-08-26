@@ -36,30 +36,8 @@ function toggleDir() {
 }
 
 /* ─── SVG LOGO ─────────────────────────────────────────── */
-function getLogoSVG(size = 36) {
-    return `<svg width="${size}" height="${size}" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-            <linearGradient id="motoLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#10B981"/>
-                <stop offset="100%" stop-color="#047857"/>
-            </linearGradient>
-            <linearGradient id="motoAccentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#6EE7B7"/>
-                <stop offset="100%" stop-color="#34D399"/>
-            </linearGradient>
-        </defs>
-        <rect width="64" height="64" rx="16" fill="url(#motoLogoGrad)"/>
-        <rect x="1.5" y="1.5" width="61" height="61" rx="14.5" stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"/>
-        <circle cx="17" cy="42" r="8" stroke="#FFFFFF" stroke-width="3"/>
-        <circle cx="17" cy="42" r="2.5" fill="#FFFFFF"/>
-        <circle cx="47" cy="42" r="8" stroke="#FFFFFF" stroke-width="3"/>
-        <circle cx="47" cy="42" r="2.5" fill="#FFFFFF"/>
-        <path d="M17 42L25 32H36L47 42" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M20 28.5L27 28.5L34 22C36.5 20.5 41 21 44 25L47.5 32" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M40 23L47 42" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M36.5 17L39.5 23" stroke="url(#motoAccentGrad)" stroke-width="3" stroke-linecap="round"/>
-        <path d="M49 26H54" stroke="url(#motoAccentGrad)" stroke-width="2.5" stroke-linecap="round"/>
-    </svg>`;
+function getLogoSVG(size = 38) {
+    return `<img src="logo.svg" alt="Moto Service Pro Logo" width="${size}" height="${size}" class="nav-logo-img" style="width:${size}px;height:${size}px;object-fit:contain;display:block;flex-shrink:0;" />`;
 }
 
 /* ─── NAVBAR ─────────────────────────────────────────── */
@@ -94,7 +72,7 @@ function injectNav() {
         <div class="nav-inner">
             <!-- Logo -->
             <a href="index.html" class="nav-logo" aria-label="Moto Service Home">
-                ${getLogoSVG(36)}
+                ${getLogoSVG(40)}
                 <div class="nav-logo-text">
                     <span class="brand-top">MOTO</span>
                     <span class="brand-bottom">Service Pro</span>
@@ -118,7 +96,7 @@ function injectNav() {
                 </button>
                 <!-- CTAs -->
                 <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
-                <a href="contact.html#booking-form" class="btn btn-primary btn-sm">Book Service</a>
+                <a href="booking.html" class="btn btn-primary btn-sm">Book Service</a>
                 <!-- Mobile Hamburger -->
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open menu">
                     <i class="fas fa-bars mobile-menu-icon"></i>
@@ -133,7 +111,7 @@ function injectNav() {
         <div class="mobile-menu" id="mobile-menu">
             ${mobileLinksHTML}
             <div class="mob-actions">
-                <a href="contact.html#booking-form" class="btn btn-primary w-full">Book Service</a>
+                <a href="booking.html" class="btn btn-primary w-full">Book Service</a>
                 <a href="login.html" class="btn btn-secondary w-full">Login</a>
             </div>
             <div class="mob-toggles">
@@ -145,7 +123,8 @@ function injectNav() {
                 </button>
             </div>
         </div>
-    </nav>`;
+    </nav>
+    <div class="navbar-spacer"></div>`;
 }
 
 function toggleMobileMenu() {
@@ -190,7 +169,7 @@ function injectFooter() {
                 <!-- Column 1: Brand -->
                 <div class="footer-brand">
                     <a href="index.html" class="nav-logo" style="margin-bottom:0.5rem;" aria-label="Moto Service Home">
-                        ${getLogoSVG(36)}
+                        ${getLogoSVG(40)}
                         <div class="nav-logo-text">
                             <span class="brand-top" style="color:#fff;">MOTO</span>
                             <span class="brand-bottom">Service Pro</span>
@@ -335,6 +314,18 @@ function animateCounters() {
 
     counters.forEach(el => observer.observe(el));
 }
+
+/* ─── NAVBAR SCROLL LISTENER ────────────────────────────── */
+window.addEventListener('scroll', function() {
+    const nav = document.getElementById('navbar');
+    if (nav) {
+        if (window.scrollY > 15) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    }
+}, { passive: true });
 
 /* ─── INIT ON DOM READY ─────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function() {

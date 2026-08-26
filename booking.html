@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your motorcycle service appointment in simple steps. Select your bike, pick a service package, choose a time slot, and get expert repair service.">
+    <title>Book Service | Moto Service Pro — Motorcycle Service & Repair Shop</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ═══════════ BOOKING PAGE STYLES ═══════════ */
+        .booking-section {
+            padding: 3rem 0 5rem;
+            background: var(--bg-body);
+        }
+
+        .booking-layout {
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .booking-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Steps & Cards */
+        .booking-step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 2rem;
+            margin-bottom: 1.75rem;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .booking-step-card:hover {
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .step-num {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: var(--radius-full);
+            background: var(--primary);
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .step-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin: 0;
+        }
+
+        .step-subtitle {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        /* Brand Chips */
+        .brand-chips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .brand-chip {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-body);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            user-select: none;
+        }
+
+        .brand-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .brand-chip.active {
+            background: var(--primary-subtle);
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.15);
+        }
+
+        .brand-chip i {
+            font-size: 1.125rem;
+        }
+
+        /* Service Cards Selection */
+        .service-selection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .service-selection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-select-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-select-item:hover {
+            border-color: rgba(16, 185, 129, 0.5);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-select-item.active {
+            background: var(--primary-subtle);
+            border-color: var(--primary);
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.18);
+        }
+
+        .service-select-item .check-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 1.35rem;
+            height: 1.35rem;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6875rem;
+            color: transparent;
+            transition: var(--transition-fast);
+        }
+
+        [dir="rtl"] .service-select-item .check-indicator {
+            right: auto;
+            left: 1rem;
+        }
+
+        .service-select-item.active .check-indicator {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .service-item-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9375rem;
+            color: var(--text-heading);
+            margin-bottom: 0.35rem;
+            padding-right: 1.75rem;
+        }
+
+        [dir="rtl"] .service-item-title {
+            padding-right: 0;
+            padding-left: 1.75rem;
+        }
+
+        .service-item-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+            flex-grow: 1;
+        }
+
+        .service-item-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .service-item-price {
+            color: var(--primary);
+            font-size: 1rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .service-item-duration {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Service Mode Switch (Workshop vs Doorstep) */
+        .mode-switch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mode-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            user-select: none;
+        }
+
+        .mode-card:hover {
+            border-color: var(--primary);
+        }
+
+        .mode-card.active {
+            background: var(--primary-subtle);
+            border-color: var(--primary);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.15);
+        }
+
+        .mode-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: var(--radius-lg);
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .mode-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9375rem;
+            color: var(--text-heading);
+        }
+
+        .mode-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        /* Time Slot Chips */
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+            gap: 0.65rem;
+            margin-top: 0.75rem;
+        }
+
+        .time-slot {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-body);
+            transition: var(--transition-fast);
+            user-select: none;
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .time-slot.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        /* Summary Sidebar */
+        .booking-summary-sidebar {
+            position: sticky;
+            top: 6.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .summary-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .summary-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin: 0;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            margin-bottom: 0.875rem;
+            color: var(--text-body);
+        }
+
+        .summary-item .label {
+            color: var(--text-muted);
+        }
+
+        .summary-item .value {
+            font-weight: 600;
+            color: var(--text-heading);
+            text-align: right;
+            max-width: 60%;
+        }
+
+        [dir="rtl"] .summary-item .value {
+            text-align: left;
+        }
+
+        .summary-total {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px dashed var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .summary-total .total-label {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .summary-total .total-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .trust-badges-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--bg-surface);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-light);
+        }
+
+        .trust-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .trust-badge-item i {
+            color: var(--primary);
+            font-size: 0.8125rem;
+            flex-shrink: 0;
+        }
+
+        /* Success Modal */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal-backdrop.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .booking-success-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-3xl);
+            max-width: 500px;
+            width: 100%;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-2xl);
+            animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .success-icon-wrap {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 12px 28px rgba(16, 185, 129, 0.35);
+        }
+
+        .booking-ref-box {
+            background: var(--bg-surface);
+            border: 1px dashed var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 0.875rem 1.25rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div id="main-nav"></div>
+
+<!-- ═══════════ PAGE HEADER ═══════════ -->
+<div class="page-header" style="text-align:center;padding:4.5rem 0 6rem;min-height:360px;">
+    <div class="page-header-bg">
+        <img src="assets/images/header-booking.jpg" alt="Express motorcycle service check-in and booking reception center">
+    </div>
+    <div class="page-header-overlay"></div>
+    <div class="container animate-on-scroll">
+        <div class="breadcrumb" style="justify-content:center;">
+            <a href="index.html">Home</a>
+            <span class="separator"><i class="fas fa-chevron-right" style="font-size:0.5rem;"></i></span>
+            <span style="color:rgba(255,255,255,0.9);">Book Service</span>
+        </div>
+        <h1>Book Your Motorcycle Service</h1>
+        <p style="margin:0 auto;max-width:560px;">Simple, transparent, and certified care. Select your motorcycle, pick a service package, and schedule your appointment in seconds.</p>
+    </div>
+</div>
+
+<!-- ═══════════ BOOKING WORKFLOW ═══════════ -->
+<section class="booking-section">
+    <div class="container">
+        <form id="booking-main-form" onsubmit="handleBookingSubmit(event)">
+            <div class="booking-layout">
+                
+                <!-- Left Column: Steps -->
+                <div class="booking-steps-column">
+                    
+                    <!-- STEP 1: Bike & Service Selection -->
+                    <div class="booking-step-card animate-on-scroll">
+                        <div class="step-header">
+                            <div class="step-num">1</div>
+                            <div>
+                                <h2 class="step-title">Select Motorcycle & Service</h2>
+                                <div class="step-subtitle">Pick your motorcycle brand and service requirement</div>
+                            </div>
+                        </div>
+
+                        <!-- Brand Selection Chips -->
+                        <label class="form-label" style="margin-bottom:0.65rem;">Select Motorcycle Brand</label>
+                        <div class="brand-chips-grid">
+                            <div class="brand-chip active" onclick="selectBrand(this, 'Royal Enfield')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Royal Enfield</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Honda')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Honda</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Yamaha')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Yamaha</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'KTM')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>KTM</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Bajaj')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Bajaj</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'TVS')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>TVS</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Hero')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Hero</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Kawasaki')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Kawasaki</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'BMW')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>BMW</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Ducati')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Ducati</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Suzuki')">
+                                <i class="fas fa-motorcycle"></i>
+                                <span>Suzuki</span>
+                            </div>
+                            <div class="brand-chip" onclick="selectBrand(this, 'Other Brand')">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
+                            </div>
+                        </div>
+
+                        <!-- Motorcycle Model & Registration -->
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.75rem;">
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label class="form-label" for="bike-model-input">Motorcycle Model</label>
+                                <input type="text" id="bike-model-input" class="form-input" placeholder="e.g. Classic 350 / Duke 390" required oninput="updateSummaryBike()">
+                            </div>
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label class="form-label" for="bike-reg-input">Registration No. (Optional)</label>
+                                <input type="text" id="bike-reg-input" class="form-input" placeholder="e.g. MH 02 AB 1234">
+                            </div>
+                        </div>
+
+                        <!-- Service Packages Grid -->
+                        <label class="form-label" style="margin-bottom:0.75rem;">Choose Service Package</label>
+                        <div class="service-selection-grid">
+                            
+                            <!-- Routine Servicing -->
+                            <div class="service-select-item active" onclick="selectService(this, 'Routine Servicing', 1499, '2 Hours')">
+                                <div class="check-indicator"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="service-item-title">Routine Servicing</div>
+                                    <div class="service-item-desc">21-point safety inspection, air filter clean, spark plug check, throttle & clutch tuning.</div>
+                                </div>
+                                <div class="service-item-meta">
+                                    <span class="service-item-price">₹1,499</span>
+                                    <span class="service-item-duration"><i class="far fa-clock"></i> ~2 Hours</span>
+                                </div>
+                            </div>
+
+                            <!-- Oil Change -->
+                            <div class="service-select-item" onclick="selectService(this, 'Oil Change & Filter', 699, '45 Mins')">
+                                <div class="check-indicator"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="service-item-title">Oil Change & Filter</div>
+                                    <div class="service-item-desc">Motul / Liqui Moly 100% synthetic oil replacement with genuine OEM filter.</div>
+                                </div>
+                                <div class="service-item-meta">
+                                    <span class="service-item-price">₹699</span>
+                                    <span class="service-item-duration"><i class="far fa-clock"></i> ~45 Mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Brake Servicing -->
+                            <div class="service-select-item" onclick="selectService(this, 'Brake Overhaul & Service', 899, '1 Hour')">
+                                <div class="check-indicator"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="service-item-title">Brake Overhaul & Service</div>
+                                    <div class="service-item-desc">Brembo/Nissin pad replacement, disc truing, hydraulic fluid flush, and ABS diagnostics.</div>
+                                </div>
+                                <div class="service-item-meta">
+                                    <span class="service-item-price">₹899</span>
+                                    <span class="service-item-duration"><i class="far fa-clock"></i> ~1 Hour</span>
+                                </div>
+                            </div>
+
+                            <!-- Engine Diagnostics -->
+                            <div class="service-select-item" onclick="selectService(this, 'ECU Engine Diagnostics', 999, '45 Mins')">
+                                <div class="check-indicator"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="service-item-title">ECU Engine Diagnostics</div>
+                                    <div class="service-item-desc">Computerized error scanning, sensor calibration, real-time telemetry readout.</div>
+                                </div>
+                                <div class="service-item-meta">
+                                    <span class="service-item-price">₹999</span>
+                                    <span class="service-item-duration"><i class="far fa-clock"></i> ~45 Mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Tyre Replacement -->
+                            <div class="service-select-item" onclick="selectService(this, 'Tyre Fitment & Balance', 1999, '1 Hour')">
+                                <div class="check-indicator"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="service-item-title">Tyre Fitment & Balance</div>
+                                    <div class="service-item-desc">Precision dynamic balancing, valve replacement, tyre mounting for all major brands.</div>
+                                </div>
+                                <div class="service-item-meta">
+                                    <span class="service-item-price">₹1,999</span>
+                                    <span class="service-item-duration"><i class="far fa-clock"></i> ~1 Hour</span>
+                                </div>
+                            </div>
+
+                            <!-- Complete Overhaul -->
+                            <div class="service-select-item" onclick="selectService(this, 'Complete Service Overhaul', 2999, '4 Hours')">
+                                <div class="check-indicator"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="service-item-title">Complete Service Overhaul</div>
+                                    <div class="service-item-desc">Full 360° mechanical overhaul, all fluids flushed, ultrasonic cleaning, dyno test.</div>
+                                </div>
+                                <div class="service-item-meta">
+                                    <span class="service-item-price">₹2,999</span>
+                                    <span class="service-item-duration"><i class="far fa-clock"></i> ~4 Hours</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Service Mode, Date & Time -->
+                    <div class="booking-step-card animate-on-scroll">
+                        <div class="step-header">
+                            <div class="step-num">2</div>
+                            <div>
+                                <h2 class="step-title">Choose Service Mode & Time Slot</h2>
+                                <div class="step-subtitle">Decide how and when you want your motorcycle serviced</div>
+                            </div>
+                        </div>
+
+                        <!-- Service Mode -->
+                        <label class="form-label" style="margin-bottom:0.75rem;">Service Location Preference</label>
+                        <div class="mode-switch-grid">
+                            <div class="mode-card active" onclick="selectMode(this, 'Workshop Visit', 0)">
+                                <div class="mode-icon"><i class="fas fa-warehouse"></i></div>
+                                <div>
+                                    <div class="mode-title">Workshop Visit</div>
+                                    <div class="mode-desc">Bring your bike directly to our workshop</div>
+                                </div>
+                            </div>
+                            <div class="mode-card" onclick="selectMode(this, 'Doorstep Pickup & Drop', 199)">
+                                <div class="mode-icon"><i class="fas fa-truck-pickup"></i></div>
+                                <div>
+                                    <div class="mode-title">Doorstep Pickup (+₹199)</div>
+                                    <div class="mode-desc">Safe carrier pickup & delivery to your door</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Date & Time Picker -->
+                        <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:1.5rem;align-items:start;">
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label class="form-label" for="booking-date">Preferred Date</label>
+                                <input type="date" id="booking-date" class="form-input" required onchange="updateSummaryDate()">
+                            </div>
+                            <div>
+                                <label class="form-label">Available Time Slots</label>
+                                <div class="time-slots-grid">
+                                    <div class="time-slot active" onclick="selectTimeSlot(this, '09:00 AM')">09:00 AM</div>
+                                    <div class="time-slot" onclick="selectTimeSlot(this, '10:30 AM')">10:30 AM</div>
+                                    <div class="time-slot" onclick="selectTimeSlot(this, '12:00 PM')">12:00 PM</div>
+                                    <div class="time-slot" onclick="selectTimeSlot(this, '02:00 PM')">02:00 PM</div>
+                                    <div class="time-slot" onclick="selectTimeSlot(this, '03:30 PM')">03:30 PM</div>
+                                    <div class="time-slot" onclick="selectTimeSlot(this, '05:00 PM')">05:00 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Step 3 (Customer Info) & Booking Summary -->
+                <div class="booking-summary-column animate-on-scroll">
+                    
+                    <!-- STEP 3: Customer Information -->
+                    <div class="booking-step-card" style="margin-bottom:1.5rem;padding:1.75rem;">
+                        <div class="step-header" style="margin-bottom:1.25rem;padding-bottom:0.875rem;">
+                            <div class="step-num">3</div>
+                            <div>
+                                <h2 class="step-title" style="font-size:1.15rem;">Customer Details</h2>
+                                <div class="step-subtitle">Appointment confirmation via SMS & WhatsApp</div>
+                            </div>
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;margin-bottom:0.875rem;">
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label class="form-label" for="cust-name">Full Name</label>
+                                <input type="text" id="cust-name" class="form-input" placeholder="e.g. Rajesh Kumar" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom:0;">
+                                <label class="form-label" for="cust-phone">Phone Number</label>
+                                <input type="tel" id="cust-phone" class="form-input" placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom:0.875rem;">
+                            <label class="form-label" for="cust-email">Email Address</label>
+                            <input type="email" id="cust-email" class="form-input" placeholder="rajesh@example.com" required>
+                        </div>
+
+                        <!-- Conditional Address for Doorstep -->
+                        <div class="form-group" id="pickup-address-group" style="display:none;margin-bottom:0.875rem;">
+                            <label class="form-label" for="cust-address">Doorstep Pickup Address</label>
+                            <input type="text" id="cust-address" class="form-input" placeholder="House/Flat No, Street, Landmark, Pincode">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label" for="cust-notes">Special Requests (Optional)</label>
+                            <textarea id="cust-notes" class="form-input" rows="2" placeholder="e.g. Squeaking noise in front brake, chain slack..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Booking Summary & Action -->
+                    <div class="booking-summary-sidebar">
+                        <div class="summary-header">
+                            <h3 class="summary-title">Booking Summary</h3>
+                            <span class="badge badge-primary" style="font-size:0.6875rem;"><i class="fas fa-check-circle"></i> Best Rate</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="label">Motorcycle</span>
+                            <span class="value" id="summary-bike">Royal Enfield (Model Pending)</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="label">Service Package</span>
+                            <span class="value" id="summary-service">Routine Servicing</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="label">Est. Duration</span>
+                            <span class="value" id="summary-duration">~2 Hours</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="label">Service Mode</span>
+                            <span class="value" id="summary-mode">Workshop Visit</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="label">Date & Time</span>
+                            <span class="value" id="summary-slot">Select Date • 09:00 AM</span>
+                        </div>
+
+                        <div style="margin: 1rem 0; border-bottom: 1px solid var(--border-light);"></div>
+
+                        <div class="summary-item">
+                            <span class="label">Base Service</span>
+                            <span class="value" id="summary-base-price">₹1,499</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="label">Pickup / Delivery</span>
+                            <span class="value" id="summary-pickup-fee">₹0 (Free)</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="label">Digital Health Check</span>
+                            <span class="value" style="color:var(--primary);">FREE (Included)</span>
+                        </div>
+
+                        <div class="summary-total">
+                            <span class="total-label">Total Estimated</span>
+                            <span class="total-price" id="summary-total-price">₹1,499</span>
+                        </div>
+
+                        <!-- Trust List -->
+                        <div class="trust-badges-list">
+                            <div class="trust-badge-item">
+                                <i class="fas fa-shield-check"></i>
+                                <span>30-Day / 1,000 KM Service Warranty</span>
+                            </div>
+                            <div class="trust-badge-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>100% Genuine OEM Spares Guaranteed</span>
+                            </div>
+                            <div class="trust-badge-item">
+                                <i class="fas fa-hand-holding-dollar"></i>
+                                <span>Pay After Service via UPI, Card, or Cash</span>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-full btn-lg" id="confirm-booking-btn" style="box-shadow:0 8px 24px var(--primary-glow);">
+                            <i class="fas fa-calendar-check"></i> Confirm & Book Appointment
+                        </button>
+                        <p style="text-align:center;font-size:0.6875rem;color:var(--text-muted);margin-top:0.75rem;">
+                            No upfront payment required • Instant cancellation anytime
+                        </p>
+                    </div>
+
+                    <!-- Workshop Assurance Visual Card -->
+                    <div class="booking-promo-card" style="margin-top:1.5rem;background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-2xl);overflow:hidden;box-shadow:var(--shadow-md);">
+                        <div style="position:relative;height:180px;overflow:hidden;">
+                            <img src="assets/images/booking-service-promo.jpg" alt="Certified master technician inspecting superbike with digital diagnostic tablet" style="width:100%;height:100%;object-fit:cover;">
+                            <div style="position:absolute;bottom:0.75rem;left:0.75rem;right:0.75rem;background:rgba(13,17,23,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);padding:0.5rem 0.85rem;border-radius:var(--radius-lg);display:flex;align-items:center;gap:0.5rem;color:#fff;font-size:0.75rem;font-weight:600;">
+                                <i class="fas fa-microchip" style="color:#10B981;"></i>
+                                <span>21-Point Digital OBD Diagnostic Included</span>
+                            </div>
+                        </div>
+                        <div style="padding:1.25rem 1.5rem;">
+                            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem;">
+                                <span style="font-size:0.875rem;font-weight:700;color:var(--text-heading);">Certified Master Workshop</span>
+                                <span class="badge badge-primary" style="font-size:0.625rem;padding:0.2rem 0.5rem;">100% Guaranteed</span>
+                            </div>
+                            <p style="font-size:0.8125rem;color:var(--text-muted);margin:0;line-height:1.5;">
+                                Every booking includes full OEM diagnostic scan, live video updates on WhatsApp, and genuine spare parts backed by our 90-day warranty.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- ═══════════ SUCCESS CONFIRMATION MODAL ═══════════ -->
+<div class="modal-backdrop" id="success-modal">
+    <div class="booking-success-card">
+        <div class="success-icon-wrap">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2 style="font-size:1.5rem;margin-bottom:0.5rem;color:var(--text-heading);">Service Booked Successfully!</h2>
+        <p style="font-size:0.875rem;color:var(--text-muted);">Thank you! Your appointment has been registered in our workshop queue. We have sent a confirmation message with full details to your phone.</p>
+
+        <div class="booking-ref-box">
+            <div style="text-align:left;">
+                <div style="font-size:0.6875rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Booking Reference ID</div>
+                <div style="font-family:var(--font-heading);font-weight:800;font-size:1.125rem;color:var(--primary);" id="modal-ref-id">#MSP-89421</div>
+            </div>
+            <span class="badge badge-primary" style="font-size:0.6875rem;">Confirmed</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <a href="index.html" class="btn btn-primary w-full">
+                <i class="fas fa-home"></i> Back to Homepage
+            </a>
+            <button onclick="closeSuccessModal()" class="btn btn-secondary w-full">
+                Book Another Service
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="main-footer"></div>
+
+<!-- Scripts -->
+<script src="components.js"></script>
+<script>
+    // State
+    let selectedBrandName = "Royal Enfield";
+    let selectedServiceName = "Routine Servicing";
+    let selectedServicePrice = 1499;
+    let selectedServiceDuration = "2 Hours";
+    let selectedServiceMode = "Workshop Visit";
+    let pickupFee = 0;
+    let selectedTime = "09:00 AM";
+
+    // Set Default Date to Tomorrow
+    document.addEventListener("DOMContentLoaded", () => {
+        const dateInput = document.getElementById("booking-date");
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+        dateInput.value = `${yyyy}-${mm}-${dd}`;
+        updateSummaryDate();
+    });
+
+    function selectBrand(el, brand) {
+        document.querySelectorAll('.brand-chip').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        selectedBrandName = brand;
+        updateSummaryBike();
+    }
+
+    function selectService(el, name, price, duration) {
+        document.querySelectorAll('.service-select-item').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        selectedServiceName = name;
+        selectedServicePrice = price;
+        selectedServiceDuration = duration;
+        
+        document.getElementById('summary-service').textContent = name;
+        document.getElementById('summary-duration').textContent = `~${duration}`;
+        document.getElementById('summary-base-price').textContent = `₹${price.toLocaleString()}`;
+        recalcTotal();
+    }
+
+    function selectMode(el, mode, fee) {
+        document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        selectedServiceMode = mode;
+        pickupFee = fee;
+
+        const addressGroup = document.getElementById('pickup-address-group');
+        const addressInput = document.getElementById('cust-address');
+        if (fee > 0) {
+            addressGroup.style.display = 'block';
+            addressInput.required = true;
+            document.getElementById('summary-pickup-fee').textContent = `+₹${fee}`;
+        } else {
+            addressGroup.style.display = 'none';
+            addressInput.required = false;
+            document.getElementById('summary-pickup-fee').textContent = '₹0 (Free)';
+        }
+
+        document.getElementById('summary-mode').textContent = mode;
+        recalcTotal();
+    }
+
+    function selectTimeSlot(el, time) {
+        document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+        selectedTime = time;
+        updateSummaryDate();
+    }
+
+    function updateSummaryBike() {
+        const model = document.getElementById('bike-model-input').value.trim();
+        const display = model ? `${selectedBrandName} ${model}` : `${selectedBrandName} (Model Pending)`;
+        document.getElementById('summary-bike').textContent = display;
+    }
+
+    function updateSummaryDate() {
+        const dateVal = document.getElementById('booking-date').value;
+        if (dateVal) {
+            const dateObj = new Date(dateVal + 'T00:00:00');
+            const formatted = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            document.getElementById('summary-slot').textContent = `${formatted} • ${selectedTime}`;
+        } else {
+            document.getElementById('summary-slot').textContent = `Date Pending • ${selectedTime}`;
+        }
+    }
+
+    function recalcTotal() {
+        const total = selectedServicePrice + pickupFee;
+        document.getElementById('summary-total-price').textContent = `₹${total.toLocaleString()}`;
+    }
+
+    function handleBookingSubmit(e) {
+        e.preventDefault();
+        // Generate random reference ID
+        const randomRef = 'MSP-' + Math.floor(10000 + Math.random() * 90000);
+        document.getElementById('modal-ref-id').textContent = '#' + randomRef;
+        document.getElementById('success-modal').classList.add('show');
+    }
+
+    function closeSuccessModal() {
+        document.getElementById('success-modal').classList.remove('show');
+        document.getElementById('booking-main-form').reset();
+        document.querySelectorAll('.brand-chip')[0].click();
+        document.querySelectorAll('.service-select-item')[0].click();
+        document.querySelectorAll('.mode-card')[0].click();
+        document.querySelectorAll('.time-slot')[0].click();
+    }
+</script>
+</body>
+</html>
