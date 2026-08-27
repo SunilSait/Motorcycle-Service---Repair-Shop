@@ -1734,19 +1734,27 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
     .process-strip {
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 2.5rem;
+    }
+    .process-step {
+        max-width: 320px;
+        width: 100%;
+        padding: 0;
     }
     .process-step::after {
-        top: auto;
+        top: 100%;
         right: auto;
-        bottom: -1rem;
+        bottom: auto;
         left: 50%;
         width: 2px;
-        height: 2rem;
+        height: 1.75rem;
+        margin-top: 0.375rem;
         transform: translateX(-50%);
+        background: var(--border-default);
     }
     [dir="rtl"] .process-step::after {
         left: 50%;
+        right: auto;
     }
     .process-step:last-child::after {
         display: none;

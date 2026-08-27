@@ -34,6 +34,39 @@
             gap: 4rem;
             align-items: center;
         }
+        .hero2-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero2-desc {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 1.0625rem;
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+        }
+        .hero2-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .hero2-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+        .hero2-stat-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 1rem;
+            text-align: left;
+        }
+        [dir="rtl"] .hero2-stat-item {
+            border-left: none;
+            border-right: 3px solid var(--primary);
+            padding-left: 0;
+            padding-right: 1rem;
+            text-align: right;
+        }
         .hero2-img-wrapper {
             position: relative;
         }
@@ -776,6 +809,10 @@
 
         @media (max-width: 1024px) {
             .hero2-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero2-content { max-width: 720px; margin: 0 auto; }
+            .hero2-desc { margin-left: auto; margin-right: auto; }
+            .hero2-actions { justify-content: center; }
+            .hero2-stats { max-width: 600px; margin-left: auto; margin-right: auto; }
             .hero2-img img { height: 360px; }
             .float-badge { display: none; }
             .bento-grid { grid-template-columns: 1fr 1fr; }
@@ -785,8 +822,39 @@
             .hero2 { min-height: auto; padding: 6rem 0 3rem; }
             .timeline { flex-direction: column; align-items: center; gap: 2rem; }
             .timeline::before { display: none; }
-            .bento-grid { grid-template-columns: 1fr; }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
+            }
             .bento-wide { grid-column: span 1; }
+        }
+        @media (max-width: 640px) {
+            .hero2-stats {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .hero2-stat-item {
+                border-left: none;
+                border-top: 2px solid var(--primary);
+                padding-left: 0;
+                padding-top: 0.75rem;
+                text-align: center;
+            }
+            [dir="rtl"] .hero2-stat-item {
+                border-right: none;
+                border-top: 2px solid var(--primary);
+                padding-right: 0;
+                padding-top: 0.75rem;
+                text-align: center;
+            }
+            .hero2-actions {
+                flex-direction: column;
+            }
+            .hero2-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -800,31 +868,31 @@
     <div class="container" style="position:relative;z-index:2;padding:3rem 1.25rem;">
         <div class="hero2-grid">
             <!-- Left: Text -->
-            <div>
+            <div class="hero2-content">
                 <div class="section-label" style="color:rgba(255,255,255,0.6);">
                     <i class="fas fa-gear"></i> Premium Service Experience
                 </div>
                 <h1 style="color:#fff;margin-bottom:1.25rem;line-height:1.1;">
                     Precision Service.<br><span style="color:#10B981;">Peak Performance.</span>
                 </h1>
-                <p style="color:rgba(255,255,255,0.65);font-size:1.0625rem;max-width:480px;margin-bottom:2.5rem;">
+                <p class="hero2-desc">
                     Every motorcycle tells a story. We ensure yours keeps running at its absolute best with factory-grade service and genuine parts.
                 </p>
-                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div class="hero2-actions">
                     <a href="booking.html" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> Book Now</a>
                     <a href="services.html" class="btn btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;">Explore Services</a>
                 </div>
                 <!-- Counter Stats Row -->
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;">
-                    <div style="border-left:3px solid var(--primary);padding-left:1rem;">
+                <div class="hero2-stats">
+                    <div class="hero2-stat-item">
                         <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="15000" data-suffix="+">0</div>
                         <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);">Bikes Serviced</div>
                     </div>
-                    <div style="border-left:3px solid var(--primary);padding-left:1rem;">
+                    <div class="hero2-stat-item">
                         <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="98" data-suffix="%">0</div>
                         <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);">Satisfaction Rate</div>
                     </div>
-                    <div style="border-left:3px solid var(--primary);padding-left:1rem;">
+                    <div class="hero2-stat-item">
                         <div style="font-family:var(--font-heading);font-weight:600;font-size:1.75rem;color:#fff;" data-count="14" data-suffix=" Yrs">0</div>
                         <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);">Industry Experience</div>
                     </div>

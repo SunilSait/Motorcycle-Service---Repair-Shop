@@ -53,6 +53,351 @@
             color: var(--primary);
             white-space: nowrap;
         }
+
+        /* ═══════════ UNIQUE PRICING VALUE REVIEWS ═══════════ */
+        .pricing-reviews-section {
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-body) 0%, rgba(16, 185, 129, 0.03) 50%, var(--bg-body) 100%);
+        }
+
+        .pricing-proof-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 920px;
+            margin: 0 auto 3.25rem;
+        }
+        @media (max-width: 768px) {
+            .pricing-proof-bar {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+            }
+        }
+
+        .proof-stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: 1.15rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.95rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+        .proof-stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 12px 28px rgba(16, 185, 129, 0.1);
+        }
+        .proof-stat-icon {
+            width: 2.85rem;
+            height: 2.85rem;
+            border-radius: var(--radius-lg);
+            background: var(--primary-subtle);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .proof-stat-val {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text-heading);
+            line-height: 1.15;
+        }
+        .proof-stat-lbl {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
+
+        /* 3-Card Value Deck */
+        .value-deck-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            align-items: stretch;
+        }
+        @media (max-width: 1024px) {
+            .value-deck-grid {
+                grid-template-columns: 1fr;
+                max-width: 580px;
+                margin: 0 auto;
+                gap: 2.25rem;
+            }
+        }
+
+        .value-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-3xl);
+            padding: 2.25rem 1.75rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-premium);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08), 0 0 30px rgba(16, 185, 129, 0.1);
+        }
+
+        /* Featured / Popular Value Card */
+        .value-card.featured-card {
+            background: linear-gradient(165deg, var(--bg-card) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 2px solid var(--primary);
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.16), 0 4px 16px rgba(0, 0, 0, 0.04);
+            transform: translateY(-6px);
+        }
+        @media (max-width: 1024px) {
+            .value-card.featured-card {
+                transform: translateY(0);
+            }
+        }
+        .value-card.featured-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 28px 64px rgba(16, 185, 129, 0.26), 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .value-card-featured-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
+            color: #FFFFFF;
+            font-family: var(--font-heading);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.35rem 1.25rem;
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            box-shadow: 0 4px 14px var(--primary-glow);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        .value-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-top: 0.25rem;
+        }
+
+        .plan-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.35rem 0.85rem;
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+        }
+        .plan-tag-pill.basic {
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563EB;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+        }
+        .plan-tag-pill.complete {
+            background: var(--primary-subtle);
+            color: var(--primary);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .plan-tag-pill.premium {
+            background: rgba(168, 85, 247, 0.1);
+            color: #9333EA;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
+        .dark .plan-tag-pill.basic {
+            background: rgba(59, 130, 246, 0.18);
+            color: #60A5FA;
+        }
+        .dark .plan-tag-pill.premium {
+            background: rgba(168, 85, 247, 0.18);
+            color: #C084FC;
+        }
+
+        .value-score-box {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: #F59E0B;
+        }
+        .value-score-box i { font-size: 0.8125rem; }
+
+        .value-perk-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 1.25rem;
+            width: fit-content;
+        }
+        .value-perk-chip i {
+            color: var(--primary);
+            font-size: 0.8125rem;
+        }
+
+        .value-quote-text {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .value-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-light);
+            gap: 0.75rem;
+        }
+
+        .rider-profile-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .rider-avatar-disc {
+            width: 2.85rem;
+            height: 2.85rem;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            background: var(--bg-surface);
+        }
+        .rider-avatar-disc img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .rider-name-val {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9375rem;
+            color: var(--text-heading);
+            line-height: 1.2;
+        }
+
+        .rider-bike-val {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 0.2rem;
+        }
+
+        .verified-stamp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-surface);
+            padding: 0.3rem 0.65rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
+            white-space: nowrap;
+        }
+        .verified-stamp i {
+            color: var(--primary);
+        }
+
+        /* Bottom Transparency Guarantee Banner */
+        .pricing-guarantee-banner {
+            margin-top: 3.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 2.25rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            max-width: 820px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .guarantee-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+            max-width: 640px;
+        }
+        .guarantee-icon-badge {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: var(--primary-subtle);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin: 0 auto;
+        }
+        .guarantee-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text-heading);
+            margin-bottom: 0.35rem;
+        }
+        .guarantee-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .pricing-guarantee-banner {
+                padding: 1.75rem 1.25rem;
+            }
+            .pricing-guarantee-banner .btn {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -214,81 +559,113 @@
     </div>
 </section>
 
-<!-- ═══════════ CUSTOMER REVIEWS ═══════════ -->
-<section class="section" id="pricing-reviews">
+<!-- ═══════════ VALUE STORIES & TRANSPARENCY PROOF ═══════════ -->
+<section class="section pricing-reviews-section" id="pricing-reviews">
     <div class="container">
-        <div class="section-header animate-on-scroll">
-            <div class="section-label"><i class="fas fa-star"></i> Customer Reviews</div>
+        <div class="section-header animate-on-scroll" style="margin-bottom:2.25rem;">
+            <div class="section-label"><i class="fas fa-shield-halved"></i> Pricing Transparency</div>
             <h2>What Riders Say About Our Pricing</h2>
-            <p>Real feedback from motorcycle owners on our transparent estimates, genuine parts, and outstanding value.</p>
+            <p>Real feedback from motorcycle owners on our upfront estimates, live WhatsApp video updates, and zero hidden costs.</p>
         </div>
 
-        <div class="grid grid-3">
-            <!-- Review 1 -->
-            <div class="testimonial-card animate-on-scroll">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-                    <div class="stars" style="margin-bottom:0;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <span style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6875rem;font-weight:600;color:var(--primary);background:var(--primary-subtle);padding:0.25rem 0.6rem;border-radius:var(--radius-full);border:1px solid rgba(16,185,129,0.2);">
-                        <i class="fas fa-check-circle"></i> Complete Plan
-                    </span>
+        <!-- 3-Pill Transparency & Savings Matrix -->
+        <div class="pricing-proof-bar animate-on-scroll">
+            <div class="proof-stat-card">
+                <div class="proof-stat-icon"><i class="fas fa-star"></i></div>
+                <div>
+                    <div class="proof-stat-val">4.9 / 5.0</div>
+                    <div class="proof-stat-lbl">520+ Google Reviews</div>
                 </div>
-                <p class="quote">"The ₹2,999 Complete Service plan is worth every single rupee. They sent me WhatsApp video proof of every part replaced and there was zero hidden cost. Highly recommended!"</p>
-                <div class="author">
-                    <div class="author-avatar">
-                        <img src="assets/images/rider-rajesh.png" alt="Rajesh Kumar - Royal Enfield Rider">
+            </div>
+            <div class="proof-stat-card">
+                <div class="proof-stat-icon"><i class="fas fa-receipt"></i></div>
+                <div>
+                    <div class="proof-stat-val">₹0 Hidden</div>
+                    <div class="proof-stat-lbl">100% Upfront Estimates</div>
+                </div>
+            </div>
+            <div class="proof-stat-card">
+                <div class="proof-stat-icon"><i class="fas fa-certificate"></i></div>
+                <div>
+                    <div class="proof-stat-val">90-Day Plan</div>
+                    <div class="proof-stat-lbl">Complete Warranty</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3-Tier Value Cards Deck -->
+        <div class="value-deck-grid animate-on-scroll">
+            <!-- Card 1: Basic Tier Story -->
+            <div class="value-card">
+                <div>
+                    <div class="value-card-top">
+                        <span class="plan-tag-pill basic"><i class="fas fa-wrench"></i> Basic Plan • ₹1,499</span>
+                        <div class="value-score-box"><i class="fas fa-star"></i> 4.9</div>
                     </div>
-                    <div>
-                        <div class="author-name">Rajesh Kumar</div>
-                        <div class="author-bike"><i class="fas fa-motorcycle" style="color:var(--primary);margin-right:0.25rem;"></i> Royal Enfield Classic 350</div>
+                    <p class="value-quote-text">"Booked the Basic plan for my R15. Quick 2-hour turnaround, free foam wash included, and the engine feels butter smooth. Best value motorcycle care in town."</p>
+                </div>
+                <div class="value-card-footer">
+                    <div class="rider-profile-wrap">
+                        <div class="rider-avatar-disc">
+                            <img src="assets/images/rider-anita.png" alt="Anita Mehta - Yamaha R15 Rider">
+                        </div>
+                        <div class="rider-name-val">Anita Mehta</div>
                     </div>
+                    <span class="verified-stamp"><i class="fas fa-check-circle"></i> Verified</span>
                 </div>
             </div>
 
-            <!-- Review 2 -->
-            <div class="testimonial-card animate-on-scroll">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-                    <div class="stars" style="margin-bottom:0;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <!-- Card 2: Complete Tier Story (Featured Popular Card) -->
+            <div class="value-card featured-card">
+                <div>
+                    <div class="value-card-top">
+                        <span class="plan-tag-pill complete"><i class="fas fa-cogs"></i> Complete Plan • ₹2,999</span>
+                        <div class="value-score-box"><i class="fas fa-star"></i> 5.0</div>
                     </div>
-                    <span style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6875rem;font-weight:600;color:var(--primary);background:var(--primary-subtle);padding:0.25rem 0.6rem;border-radius:var(--radius-full);border:1px solid rgba(16,185,129,0.2);">
-                        <i class="fas fa-check-circle"></i> Premium Overhaul
-                    </span>
+                    <p class="value-quote-text">"The ₹2,999 Complete Service plan is worth every single rupee. They sent me WhatsApp video proof of every part replaced and there was zero hidden cost."</p>
                 </div>
-                <p class="quote">"Main dealer quoted nearly double for my Panigale's ECU diagnostics and fluid flush. Moto Service Pro did a stellar job with 90-day warranty and full price breakdown upfront."</p>
-                <div class="author">
-                    <div class="author-avatar">
-                        <img src="assets/images/rider-vikram.jpg" alt="Vikram Rao - Ducati Rider">
+                <div class="value-card-footer">
+                    <div class="rider-profile-wrap">
+                        <div class="rider-avatar-disc" style="border-color:var(--primary);box-shadow:0 0 14px var(--primary-glow);">
+                            <img src="assets/images/rider-rajesh.png" alt="Rajesh Kumar - Royal Enfield Rider">
+                        </div>
+                        <div class="rider-name-val">Rajesh Kumar</div>
                     </div>
-                    <div>
-                        <div class="author-name">Vikram Rao</div>
-                        <div class="author-bike"><i class="fas fa-motorcycle" style="color:var(--primary);margin-right:0.25rem;"></i> Ducati Panigale V4</div>
-                    </div>
+                    <span class="verified-stamp" style="border-color:rgba(16,185,129,0.3);color:var(--primary);"><i class="fas fa-shield-check"></i> Verified Job</span>
                 </div>
             </div>
 
-            <!-- Review 3 -->
-            <div class="testimonial-card animate-on-scroll">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-                    <div class="stars" style="margin-bottom:0;">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <!-- Card 3: Premium Tier Story -->
+            <div class="value-card">
+                <div>
+                    <div class="value-card-top">
+                        <span class="plan-tag-pill premium"><i class="fas fa-gem"></i> Premium Overhaul • ₹5,999</span>
+                        <div class="value-score-box"><i class="fas fa-star"></i> 5.0</div>
                     </div>
-                    <span style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6875rem;font-weight:600;color:var(--primary);background:var(--primary-subtle);padding:0.25rem 0.6rem;border-radius:var(--radius-full);border:1px solid rgba(16,185,129,0.2);">
-                        <i class="fas fa-check-circle"></i> Basic Service
-                    </span>
+                    <p class="value-quote-text">"Main dealer quoted nearly double for my Panigale's ECU diagnostics and fluid flush. Moto Service Pro did a stellar job with 90-day warranty and full price breakdown."</p>
                 </div>
-                <p class="quote">"Booked the Basic plan for my R15. Quick 2-hour turnaround, free foam wash included, and the engine feels butter smooth. Best value motorcycle care in town."</p>
-                <div class="author">
-                    <div class="author-avatar">
-                        <img src="assets/images/rider-anita.png" alt="Anita Mehta - Yamaha R15 Rider">
+                <div class="value-card-footer">
+                    <div class="rider-profile-wrap">
+                        <div class="rider-avatar-disc">
+                            <img src="assets/images/rider-vikram.jpg" alt="Vikram Rao - Ducati Rider">
+                        </div>
+                        <div class="rider-name-val">Vikram Rao</div>
                     </div>
-                    <div>
-                        <div class="author-name">Anita Mehta</div>
-                        <div class="author-bike"><i class="fas fa-motorcycle" style="color:var(--primary);margin-right:0.25rem;"></i> Yamaha R15 V4</div>
-                    </div>
+                    <span class="verified-stamp"><i class="fas fa-shield-halved"></i> 90-Day Active</span>
                 </div>
             </div>
+        </div>
+
+        <!-- Bottom Transparency Guarantee Banner -->
+        <div class="pricing-guarantee-banner animate-on-scroll">
+            <div class="guarantee-content">
+                <div class="guarantee-icon-badge"><i class="fas fa-hand-holding-dollar"></i></div>
+                <div>
+                    <div class="guarantee-title">Our Upfront Price Guarantee</div>
+                    <div class="guarantee-desc">No surprise invoices. If unexpected repairs are discovered during inspection, we send WhatsApp video estimates for your approval before replacing a single bolt.</div>
+                </div>
+            </div>
+            <a href="booking.html" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book with ₹0 Advance</a>
         </div>
     </div>
 </section>

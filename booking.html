@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* ═══════════ BOOKING PAGE STYLES ═══════════ */
+        /* ═══════════ BOOKING PAGE BASE STYLES ═══════════ */
         .booking-section {
             padding: 3rem 0 5rem;
             background: var(--bg-body);
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .booking-layout {
@@ -20,13 +22,15 @@
             grid-template-columns: 1.12fr 0.88fr;
             gap: 2rem;
             align-items: start;
+            min-width: 0;
+            width: 100%;
         }
 
-        @media (max-width: 992px) {
-            .booking-layout {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        .booking-steps-column,
+        .booking-summary-column {
+            min-width: 0;
+            width: 100%;
+            max-width: 100%;
         }
 
         /* Steps & Cards */
@@ -38,6 +42,9 @@
             margin-bottom: 1.75rem;
             transition: var(--transition-smooth);
             position: relative;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .booking-step-card:hover {
@@ -90,6 +97,8 @@
             grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             gap: 0.75rem;
             margin-bottom: 1.25rem;
+            width: 100%;
+            min-width: 0;
         }
 
         .brand-chip {
@@ -108,6 +117,10 @@
             align-items: center;
             gap: 0.35rem;
             user-select: none;
+            overflow: hidden;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .brand-chip:hover {
@@ -127,17 +140,31 @@
             font-size: 1.125rem;
         }
 
+        .brand-chip span {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            text-align: center;
+        }
+
+        /* Form Grid Helpers */
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            width: 100%;
+            min-width: 0;
+        }
+
         /* Service Cards Selection */
         .service-selection-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1rem;
-        }
-
-        @media (max-width: 640px) {
-            .service-selection-grid {
-                grid-template-columns: 1fr;
-            }
+            width: 100%;
+            min-width: 0;
         }
 
         .service-select-item {
@@ -152,6 +179,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .service-select-item:hover {
@@ -244,6 +274,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            width: 100%;
+            min-width: 0;
         }
 
         .mode-card {
@@ -257,6 +289,9 @@
             align-items: center;
             gap: 1rem;
             user-select: none;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .mode-card:hover {
@@ -301,6 +336,8 @@
             grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
             gap: 0.65rem;
             margin-top: 0.75rem;
+            width: 100%;
+            min-width: 0;
         }
 
         .time-slot {
@@ -315,6 +352,8 @@
             color: var(--text-body);
             transition: var(--transition-fast);
             user-select: none;
+            min-width: 0;
+            box-sizing: border-box;
         }
 
         .time-slot:hover {
@@ -338,6 +377,9 @@
             border-radius: var(--radius-2xl);
             padding: 2rem;
             box-shadow: var(--shadow-lg);
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .summary-header {
@@ -495,6 +537,124 @@
             from { transform: scale(0.92); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
+
+        /* ═══════════ RESPONSIVE BREAKPOINTS (At the bottom to guarantee precedence) ═══════════ */
+        @media (max-width: 992px) {
+            .booking-layout {
+                grid-template-columns: 100%;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .booking-section .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .booking-step-card {
+                padding: 1.5rem 1.25rem;
+                border-radius: var(--radius-xl);
+            }
+            .booking-summary-sidebar {
+                padding: 1.5rem 1.25rem;
+                border-radius: var(--radius-xl);
+            }
+            .mode-switch-grid {
+                grid-template-columns: 1fr;
+                gap: 0.875rem;
+            }
+            .form-grid-2 {
+                grid-template-columns: 100%;
+                gap: 0.875rem;
+            }
+            .service-selection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .booking-section .container {
+                padding-left: 0.875rem;
+                padding-right: 0.875rem;
+            }
+            .booking-step-card {
+                padding: 1.25rem 0.875rem !important;
+            }
+            .booking-summary-sidebar {
+                padding: 1.25rem 0.875rem !important;
+            }
+            .step-header {
+                gap: 0.75rem;
+                margin-bottom: 1.25rem;
+                padding-bottom: 0.75rem;
+            }
+            .step-num {
+                width: 2rem;
+                height: 2rem;
+                font-size: 0.875rem;
+            }
+            .step-title {
+                font-size: 1.0625rem;
+            }
+            .step-subtitle {
+                font-size: 0.75rem;
+            }
+            .brand-chips-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 0.45rem;
+            }
+            .brand-chip {
+                padding: 0.6rem 0.2rem;
+                font-size: 0.75rem;
+                border-radius: var(--radius-md);
+            }
+            .brand-chip i {
+                font-size: 0.9375rem;
+            }
+            .brand-chip span {
+                font-size: 0.6875rem;
+            }
+            .mode-switch-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .mode-card {
+                padding: 1rem 0.875rem;
+            }
+            .time-slots-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 0.45rem;
+            }
+            .time-slot {
+                padding: 0.55rem 0.2rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .booking-section .container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            .booking-step-card {
+                padding: 1.1rem 0.65rem !important;
+            }
+            .brand-chips-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 0.35rem;
+            }
+            .brand-chip {
+                padding: 0.5rem 0.15rem;
+            }
+            .brand-chip i {
+                font-size: 0.8125rem;
+            }
+            .brand-chip span {
+                font-size: 0.625rem;
+            }
+            .time-slots-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -592,7 +752,7 @@
                         </div>
 
                         <!-- Motorcycle Model & Registration -->
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.75rem;">
+                        <div class="form-grid-2" style="margin-bottom:1.75rem;">
                             <div class="form-group" style="margin-bottom:0;">
                                 <label class="form-label" for="bike-model-input">Motorcycle Model</label>
                                 <input type="text" id="bike-model-input" class="form-input" placeholder="e.g. Classic 350 / Duke 390" required oninput="updateSummaryBike()">
@@ -718,7 +878,7 @@
                         </div>
 
                         <!-- Date & Time Picker -->
-                        <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:1.5rem;align-items:start;">
+                        <div class="form-grid-2" style="gap:1.25rem;align-items:start;">
                             <div class="form-group" style="margin-bottom:0;">
                                 <label class="form-label" for="booking-date">Preferred Date</label>
                                 <input type="date" id="booking-date" class="form-input" required onchange="updateSummaryDate()">
@@ -752,7 +912,7 @@
                             </div>
                         </div>
 
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;margin-bottom:0.875rem;">
+                        <div class="form-grid-2" style="gap:0.875rem;margin-bottom:0.875rem;">
                             <div class="form-group" style="margin-bottom:0;">
                                 <label class="form-label" for="cust-name">Full Name</label>
                                 <input type="text" id="cust-name" class="form-input" placeholder="e.g. Rajesh Kumar" required>

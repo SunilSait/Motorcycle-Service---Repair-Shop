@@ -85,7 +85,11 @@
             gap: 1.5rem;
         }
         @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
+            }
         }
 
         /* --- Split CTA with Image for Services Page --- */
@@ -168,9 +172,12 @@
             .inspection-categories-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 640px) {
-            .inspection-categories-grid { grid-template-columns: 1fr; }
+            .inspection-categories-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
+            }
         }
-
         .inspection-category-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
@@ -256,7 +263,11 @@
             .spares-guarantee-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 640px) {
-            .spares-guarantee-grid { grid-template-columns: 1fr; }
+            .spares-guarantee-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
+            }
         }
 
         .spare-card {
