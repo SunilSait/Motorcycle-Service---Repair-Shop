@@ -801,12 +801,30 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
 
 /* --- Brand Logo Strip --- */
 .brand-strip {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1.5rem;
     align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
+    justify-items: center;
     padding: 2.5rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .brand-strip {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem 1.5rem;
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 576px) {
+    .brand-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 1rem;
+        max-width: 360px;
+    }
 }
 
 .brand-item {
@@ -1084,9 +1102,14 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
     border: 1.5px solid var(--border-default);
     border-radius: var(--radius-lg);
     background: var(--bg-card);
+    color: var(--text-heading);
     cursor: pointer;
     transition: var(--transition-fast);
     font-size: 1.125rem;
+}
+
+.social-btn svg {
+    color: var(--text-heading);
 }
 
 .social-btn:hover {
@@ -1246,8 +1269,8 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
 
 .nav-link {
     font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 0.8125rem;
+    font-weight: 600;
+    font-size: 1rem;
     color: var(--text-body);
     position: relative;
     padding: 0.25rem 0;
@@ -1360,8 +1383,8 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
     padding: 0.75rem 1rem;
     border-radius: var(--radius-md);
     font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 0.875rem;
+    font-weight: 600;
+    font-size: 1rem;
     color: var(--text-body);
     transition: var(--transition-fast);
 }
@@ -1411,13 +1434,21 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
     margin-bottom: 3rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.75rem 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2.25rem;
         text-align: center;
     }
     .footer-socials { justify-content: center; }
+    .footer-brand .nav-logo { justify-content: center; }
 }
 
 .footer-brand p {
@@ -1550,7 +1581,7 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
     gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .footer-bottom {
         justify-content: center;
         text-align: center;
