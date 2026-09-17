@@ -33,7 +33,7 @@
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --radius-sm: 0.5rem;
-    --radius-md: 0.75rem;
+    --radius-md: 0.625rem;
     --radius-lg: 1rem;
     --radius-xl: 1.25rem;
     --radius-2xl: 1.5rem;
@@ -1310,6 +1310,11 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
     gap: 0.5rem;
 }
 
+.nav-actions .btn {
+    border-radius: var(--radius-md);
+    height: 2.25rem;
+}
+
 .nav-icon-btn {
     width: 2.25rem;
     height: 2.25rem;
@@ -1402,6 +1407,10 @@ input[type="date"].form-input::-webkit-calendar-picker-indicator:hover {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.mobile-menu .mob-actions .btn {
+    border-radius: var(--radius-md);
 }
 
 .mobile-menu .mob-toggles {

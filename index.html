@@ -598,6 +598,43 @@
                 height: 160px;
             }
         }
+
+        /* --- Solutions Service Cards --- */
+        .solution-card-img {
+            height: 205px;
+            overflow: hidden;
+            position: relative;
+        }
+        .solution-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card:hover .solution-card-img img {
+            transform: scale(1.06);
+        }
+        .solution-card-icon {
+            position: absolute;
+            bottom: 0.875rem;
+            right: 0.875rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(13, 17, 23, 0.88);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
+        [dir="rtl"] .solution-card-icon {
+            right: auto;
+            left: 0.875rem;
+        }
     </style>
 </head>
 <body>
@@ -746,37 +783,52 @@
 
         <div class="grid grid-3" style="gap:1.5rem;">
             <!-- Service 1 -->
-            <div class="card animate-on-scroll" style="text-align:center;">
-                <div class="icon-box icon-box-lg" style="margin:0 auto 1.25rem;">
-                    <i class="fas fa-oil-can"></i>
+            <div class="card animate-on-scroll" style="padding:0;overflow:hidden;display:flex;flex-direction:column;text-align:center;">
+                <div class="solution-card-img">
+                    <img src="assets/images/solutions-routine.jpg" alt="Routine motorcycle servicing and scheduled inspection">
+                    <div class="solution-card-icon" title="Routine Servicing">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
                 </div>
-                <h4 style="margin-bottom:0.625rem;">Routine Servicing</h4>
-                <p style="font-size:0.9375rem;color:var(--text-muted);">Comprehensive multi-point inspection and maintenance to keep your motorcycle.</p>
-                <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;gap:0.375rem;margin-top:1rem;">
-                    Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
-                </a>
+                <div style="padding:1.75rem 1.5rem;display:flex;flex-direction:column;flex-grow:1;">
+                    <h4 style="margin-bottom:0.625rem;">Routine Servicing</h4>
+                    <p style="font-size:0.9375rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.25rem;flex-grow:1;">Comprehensive multi-point inspection, fluid replacements, and preventive care to keep your motorcycle running like new.</p>
+                    <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;justify-content:center;gap:0.375rem;margin-top:auto;">
+                        Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
+                    </a>
+                </div>
             </div>
             <!-- Service 2 -->
-            <div class="card animate-on-scroll" style="text-align:center;">
-                <div class="icon-box icon-box-lg" style="margin:0 auto 1.25rem;">
-                    <i class="fas fa-cogs"></i>
+            <div class="card animate-on-scroll" style="padding:0;overflow:hidden;display:flex;flex-direction:column;text-align:center;">
+                <div class="solution-card-img">
+                    <img src="assets/images/solutions-engine.jpg" alt="High-tech electronic motorcycle engine diagnostics and ECU scan">
+                    <div class="solution-card-icon" title="Engine Diagnostics">
+                        <i class="fas fa-cogs"></i>
+                    </div>
                 </div>
-                <h4 style="margin-bottom:0.625rem;">Engine Diagnostics</h4>
-                <p style="font-size:0.9375rem;color:var(--text-muted);">Advanced diagnostic tools to identify and resolve engine issues with accuracy.</p>
-                <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;gap:0.375rem;margin-top:1rem;">
-                    Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
-                </a>
+                <div style="padding:1.75rem 1.5rem;display:flex;flex-direction:column;flex-grow:1;">
+                    <h4 style="margin-bottom:0.625rem;">Engine Diagnostics</h4>
+                    <p style="font-size:0.9375rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.25rem;flex-grow:1;">Advanced electronic diagnostic scanners and telemetry tools to identify, calibrate, and resolve engine issues with precision.</p>
+                    <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;justify-content:center;gap:0.375rem;margin-top:auto;">
+                        Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
+                    </a>
+                </div>
             </div>
             <!-- Service 3 -->
-            <div class="card animate-on-scroll" style="text-align:center;">
-                <div class="icon-box icon-box-lg" style="margin:0 auto 1.25rem;">
-                    <i class="fas fa-circle-notch"></i>
+            <div class="card animate-on-scroll" style="padding:0;overflow:hidden;display:flex;flex-direction:column;text-align:center;">
+                <div class="solution-card-img">
+                    <img src="assets/images/solutions-brake.jpg" alt="Performance motorcycle tyre fitting and Brembo disc brake service">
+                    <div class="solution-card-icon" title="Tyre & Brake Service">
+                        <i class="fas fa-circle-notch"></i>
+                    </div>
                 </div>
-                <h4 style="margin-bottom:0.625rem;">Tyre & Brake Service</h4>
-                <p style="font-size:0.9375rem;color:var(--text-muted);">Premium tyre fitting and brake overhauls for optimal safety and road grip.</p>
-                <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;gap:0.375rem;margin-top:1rem;">
-                    Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
-                </a>
+                <div style="padding:1.75rem 1.5rem;display:flex;flex-direction:column;flex-grow:1;">
+                    <h4 style="margin-bottom:0.625rem;">Tyre & Brake Service</h4>
+                    <p style="font-size:0.9375rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.25rem;flex-grow:1;">Laser wheel balancing, high-performance tyre fitment, and Brembo caliper brake overhauls for maximum road grip and safety.</p>
+                    <a href="services.html" class="link-primary" style="display:inline-flex;align-items:center;justify-content:center;gap:0.375rem;margin-top:auto;">
+                        Learn More <i class="fas fa-arrow-right" style="font-size:0.625rem;"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
